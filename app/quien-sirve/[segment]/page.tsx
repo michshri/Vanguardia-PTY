@@ -6,8 +6,9 @@ export function generateStaticParams() {
   return customerSegments.map((segment) => ({ segment: segment.slug }));
 }
 
-export default function SegmentDetailPage({ params }: { params: { segment: string } }) {
-  const segment = customerSegments.find((item) => item.slug === params.segment);
+export default async function SegmentDetailPage({ params }: { params: Promise<{ segment: string }> }) {
+  const { segment: segmentSlug } = await params;
+  const segment = customerSegments.find((item) => item.slug === segmentSlug);
 
   if (!segment) {
     notFound();

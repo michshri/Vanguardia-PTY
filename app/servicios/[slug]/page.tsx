@@ -6,8 +6,9 @@ export function generateStaticParams() {
   return serviceAreas.map((area) => ({ slug: area.slug }));
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const area = serviceAreas.find((item) => item.slug === params.slug);
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const area = serviceAreas.find((item) => item.slug === slug);
 
   if (!area) {
     notFound();

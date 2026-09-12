@@ -7,8 +7,9 @@ const resolveLocale = (lang?: string): Locale => {
   return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
-export default function HomePage({ searchParams }: { searchParams?: { lang?: string } }) {
-  const locale = resolveLocale(searchParams?.lang);
+export default async function HomePage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
+  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const locale = resolveLocale(resolvedParams?.lang);
   const dict = getDictionary(locale);
 
   return (

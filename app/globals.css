@@ -11,7 +11,7 @@
   --accent-strong: #9b3229;
   --gold: #d0af63;
   --shadow: 0 28px 60px rgba(20, 24, 30, 0.12);
-  --serif: 'Georgia', 'Times New Roman', serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   --sans: 'Segoe UI', Arial, sans-serif;
 }
 
@@ -31,7 +31,26 @@ a { color: inherit; text-decoration: none; }
 
 img { max-width: 100%; display: block; }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.04em; }
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.brand-mark img {
+  display: block;
+  width: auto;
+  height: 52px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brand-footer .brand-mark img {
+  height: 46px;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.04em; }
 
 .container {
   width: min(1200px, calc(100% - 40px));
@@ -53,6 +72,42 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.04e
   justify-content: space-between;
   gap: 18px;
   min-height: 88px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid rgba(23, 28, 34, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.lang-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.lang-pill.active {
+  background: var(--ink);
+  color: #fff;
 }
 
 .brand-mark {
@@ -165,10 +220,11 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.04e
 
 .hero-content h1 {
   margin: 0 0 18px;
-  font-size: clamp(3.2rem, 6vw, 5.8rem);
-  line-height: 0.96;
-  text-transform: uppercase;
-  letter-spacing: -0.08em;
+  font-size: clamp(3.2rem, 6vw, 5.2rem);
+  line-height: 0.94;
+  text-transform: none;
+  letter-spacing: -0.06em;
+  font-weight: 500;
 }
 
 .hero-content p {

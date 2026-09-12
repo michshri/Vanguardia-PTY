@@ -13,7 +13,7 @@ export default function ServiciosPage() {
         <div className="container">
           <p className="section-kicker">Servicios</p>
           <h1>Soluciones para la propiedad y la ejecución.</h1>
-          <p>Vanguardia ofrece respuesta a necesidades de construcción, mantenimiento, gestión y obras técnicas con una sola referencia clara y responsable.</p>
+          <p>Vanguardia responde a necesidades de construcción, mantenimiento, gestión y obras técnicas con una sola referencia clara y responsable.</p>
         </div>
       </section>
 

@@ -1,6 +1,50 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { Suspense } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { navigations } from '@/lib/site-data';
+
+const localeLabels = [
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+  { code: 'fr', label: 'FR' },
+] as const;
+
+function LocaleSwitcher() {
+  const pathname = usePathname() || '/';
+  const searchParams = useSearchParams();
+
+  const getLocaleHref = (locale: 'es' | 'en' | 'fr') => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (locale === 'es') {
+      params.delete('lang');
+    } else {
+      params.set('lang', locale);
+    }
+
+    const queryString = params.toString();
+    return `${pathname}${queryString ? `?${queryString}` : ''}`;
+  };
+
+  const activeLang = searchParams.get('lang');
+
+  return (
+    <div className="language-switcher" aria-label="Language selector">
+      {localeLabels.map((locale) => (
+        <Link
+          key={locale.code}
+          href={getLocaleHref(locale.code)}
+          className={`lang-pill ${activeLang === locale.code || (!activeLang && locale.code === 'es') ? 'active' : ''}`}
+        >
+          {locale.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export function SiteHeader() {
   return (
@@ -21,6 +65,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="header-actions">
+          <Suspense fallback={<div className="language-switcher" aria-label="Language selector"><span className="lang-pill active">ES</span><span className="lang-pill">EN</span><span className="lang-pill">FR</span></div>}>
+            <LocaleSwitcher />
+          </Suspense>
           <a className="btn btn-secondary" href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta." target="_blank" rel="noreferrer">
             WhatsApp
           </a>

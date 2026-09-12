@@ -1,28 +1,35 @@
 import Link from 'next/link';
 import { customerSegments, processSteps, projectPlaceholders, serviceAreas, valuePoints } from '@/lib/site-data';
+import { defaultLocale, getDictionary, type Locale } from '@/lib/translations';
 
-export default function HomePage() {
+const resolveLocale = (lang?: string): Locale => {
+  const value = (lang ?? '').toLowerCase();
+  return value === 'en' || value === 'fr' ? value : defaultLocale;
+};
+
+export default function HomePage({ searchParams }: { searchParams?: { lang?: string } }) {
+  const locale = resolveLocale(searchParams?.lang);
+  const dict = getDictionary(locale);
+
   return (
     <>
       <section className="hero-section">
         <div className="hero-overlay" />
         <div className="container hero-content">
-          <div className="eyebrow">Panamá • Construcción • Propiedad • Mantenimiento</div>
-          <h1>Building. Maintaining. Managing.</h1>
-          <p>
-            One accountable partner for construction, property and building services in Panama.
-          </p>
+          <div className="eyebrow">{dict.hero.eyebrow}</div>
+          <h1>{dict.hero.title}</h1>
+          <p>{dict.hero.subtitle}</p>
           <div className="cta-row">
             <Link className="btn btn-primary" href="/contacto">
-              Solicitar consulta
+              {dict.hero.primary}
             </Link>
             <Link className="btn btn-secondary" href="/servicios">
-              Explorar servicios
+              {dict.hero.secondary}
             </Link>
           </div>
           <div className="hero-meta">
-            <span>Más de 50 años de experiencia familiar</span>
-            <span>Una nueva generación con responsabilidad clara</span>
+            <span>{dict.hero.meta1}</span>
+            <span>{dict.hero.meta2}</span>
           </div>
         </div>
       </section>

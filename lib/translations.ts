@@ -37,7 +37,7 @@ export const translations: Record<Locale, TranslationSet> = {
     },
     hero: {
       eyebrow: 'Panamá • Construcción • Propiedad • Mantenimiento',
-      title: 'Building. Maintaining. Managing.',
+      title: 'Construimos. Mantenemos. Gestionamos.',
       subtitle: 'Un solo responsable para construcción, propiedad y servicios de edificación en Panamá.',
       primary: 'Solicitar consulta',
       secondary: 'Explorar servicios',

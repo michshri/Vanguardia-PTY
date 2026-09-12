@@ -10,7 +10,7 @@ export default function HomePage() {
           <div className="eyebrow">Panamá • Construcción • Propiedad • Mantenimiento</div>
           <h1>Building. Maintaining. Managing.</h1>
           <p>
-            Un solo responsable para construcción, propiedad y servicios de edificación en Panamá.
+            One accountable partner for construction, property and building services in Panama.
           </p>
           <div className="cta-row">
             <Link className="btn btn-primary" href="/contacto">
@@ -22,7 +22,7 @@ export default function HomePage() {
           </div>
           <div className="hero-meta">
             <span>Más de 50 años de experiencia familiar</span>
-            <span>Enfoque práctico y responsable</span>
+            <span>Una nueva generación con responsabilidad clara</span>
           </div>
         </div>
       </section>
@@ -35,7 +35,7 @@ export default function HomePage() {
           </div>
           <div>
             <p>
-              Vanguardia PTY nace de la experiencia acumulada por una familia panameña con raíces profundas en la construcción y la gestión de propiedades. La nueva empresa conserva ese conocimiento práctico y lo combina con un enfoque moderno, una ejecución clara y una relación más directa con cada cliente.
+              Vanguardia PTY es una nueva empresa construida sobre la experiencia acumulada por una familia panameña con profundas raíces en la comunidad y décadas de trabajo en construcción y mantenimiento de propiedades. La compañía combina ese conocimiento práctico con un enfoque moderno, una ejecución clara y una relación directa con cada cliente.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-heading">
             <p className="section-kicker">Nuestros clientes</p>
-            <h2>Soluciones para las necesidades reales de cada propiedad.</h2>
+            <h2>La obra, la propiedad y la operación necesitan claridad.</h2>
           </div>
 
           <div className="segment-grid">
@@ -95,7 +95,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-heading narrow">
             <p className="section-kicker">Por qué Vanguardia</p>
-            <h2>Responsabilidad directa. Soluciones prácticas. Visión de propiedad.</h2>
+            <h2>Una sola referencia. Una responsabilidad clara.</h2>
           </div>
 
           <div className="points-grid">

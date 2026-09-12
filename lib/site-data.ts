@@ -86,15 +86,15 @@ export const customerSegments: Segment[] = [
   {
     slug: 'residencial',
     title: 'Residencial',
-    blurb: 'Renovaciones, reparaciones y mejoras para casas y propiedades privadas con enfoque en la claridad y la ejecución responsable.',
-    problems: ['Mantenimiento que se acumula', 'Obras sin seguimiento claro', 'Interrupciones en la vivienda'],
+    blurb: 'Propietarios, familias y clientes privados que necesitan construcción, renovación, mantenimiento y coordinación ordenada para cuidar su vivienda o propiedad.',
+    problems: ['Mantenimiento que se acumula', 'Obras sin seguimiento claro', 'Interrupciones en la vida diaria'],
     solutions: ['Renovación y remodelación', 'Mantenimiento preventivo', 'Coordinación de obra y proveedores'],
     href: '/quien-sirve/residencial',
   },
   {
     slug: 'comercial-industrial',
     title: 'Comercial & Industrial',
-    blurb: 'Soluciones para inmuebles de uso comercial e industrial con prioridad a la operación, la durabilidad y la coordinación.',
+    blurb: 'Empresas, administradores y clientes con inmuebles que necesitan obras, mantenimiento y coordinación técnica sin afectar la operación.',
     problems: ['Reparaciones que afectan la operación', 'Necesidad de obras con planificación', 'Mantenimiento disperso y reactivo'],
     solutions: ['Mejoras en propiedades', 'Mantenimiento de instalaciones', 'Obras especializadas y coordinación técnica'],
     href: '/quien-sirve/comercial-industrial',
@@ -102,7 +102,7 @@ export const customerSegments: Segment[] = [
   {
     slug: 'ph',
     title: 'PH',
-    blurb: 'Mantenimiento y planificación para comunidades de propietarios, administraciones y edificios con necesidades de conservación continua.',
+    blurb: 'Administraciones, juntas y gestores de PH que requieren mantenimiento preventivo, coordinación y criterio para proteger la apariencia, el valor y la vida útil del edificio.',
     problems: ['Fallas recurrentes en áreas comunes', 'Presupuesto y planificación complejos', 'Pérdida de valor por deterioro'],
     solutions: ['Mantenimiento preventivo y correctivo', 'Trabajos de impermeabilización y pintura', 'Coordinación y control de obra'],
     href: '/quien-sirve/ph',
@@ -111,8 +111,8 @@ export const customerSegments: Segment[] = [
 
 export const valuePoints = [
   'Un solo responsable',
+  'Alcance claro',
   'Supervisión directa',
-  'Construcción + criterio de propiedad',
   'Soluciones prácticas',
   'Comunicación clara',
   'Pensamiento a largo plazo',

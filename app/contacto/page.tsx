@@ -1,0 +1,84 @@
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Contacto',
+  description: 'Solicite una consulta con Vanguardia PTY para construir, mantener o gestionar su propiedad en Panamá.',
+};
+
+export default function ContactPage() {
+  return (
+    <>
+      <section className="page-header" style={{ backgroundImage: 'linear-gradient(90deg, rgba(16,19,22,0.75), rgba(16,19,22,0.3)), url(https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1500&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="container">
+          <p className="section-kicker">Contacto</p>
+          <h1>Hablar con Vanguardia.</h1>
+          <p>Una consulta breve y clara puede ayudarnos a entender la necesidad, el alcance y la mejor forma de intervenir.</p>
+        </div>
+      </section>
+
+      <section className="page-content">
+        <div className="container content-grid">
+          <div className="form-panel">
+            <h2>Solicitar consulta</h2>
+            <form className="form-grid">
+              <label className="field">
+                Nombre
+                <input type="text" name="name" placeholder="Su nombre" />
+              </label>
+              <label className="field">
+                Email
+                <input type="email" name="email" placeholder="correo@ejemplo.com" />
+              </label>
+              <label className="field">
+                Empresa / PH
+                <input type="text" name="company" placeholder="Empresa, PH o propiedad" />
+              </label>
+              <label className="field">
+                Teléfono / WhatsApp
+                <input type="tel" name="phone" placeholder="+507 ..." />
+              </label>
+              <label className="field">
+                Tipo de cliente
+                <select name="segment">
+                  <option>Residencial</option>
+                  <option>Comercial & Industrial</option>
+                  <option>PH</option>
+                  <option>Otro</option>
+                </select>
+              </label>
+              <label className="field">
+                Servicio requerido
+                <select name="service">
+                  <option>Construcción & Renovación</option>
+                  <option>Mantenimiento & Reparaciones</option>
+                  <option>Gestión de Propiedad</option>
+                  <option>Gestión de Proyectos</option>
+                  <option>Obras Especializadas</option>
+                </select>
+              </label>
+              <label className="field full">
+                Descripción
+                <textarea name="message" placeholder="Cuéntenos qué necesita, cuál es la propiedad o el requisito principal." />
+              </label>
+              <div className="field full">
+                <button className="btn btn-primary" type="submit">Enviar consulta</button>
+              </div>
+            </form>
+          </div>
+
+          <aside className="info-panel">
+            <h3>Contacto directo</h3>
+            <ul>
+              <li>Email: contacto@vanguardia-pty.com</li>
+              <li>WhatsApp: +507 0000-0000</li>
+              <li>Panamá</li>
+            </ul>
+            <div style={{ marginTop: 28 }}>
+              <Link className="btn btn-secondary" href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta." target="_blank" rel="noreferrer">Abrir WhatsApp</Link>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -12,6 +12,7 @@ Thumbs.db
 node_modules/
 .env
 .env.*
+.next/
 
 # Python
 __pycache__/

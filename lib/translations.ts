@@ -46,13 +46,14 @@ export const translations: Record<Locale, TranslationSet> = {
     },
     heritage: {
       kicker: 'Herencia • confianza • responsabilidad',
-      heading: 'Cinco décadas de experiencia panameña. Una nueva generación.',
+      heading:
+        'Cinco décadas de experiencia panameña. Líderes en métodos y materiales modernos. Dedicados a aumentar el valor de su propiedad.',
       copy:
-        'Vanguardia PTY es una nueva empresa construida sobre la experiencia acumulada por una familia panameña con profundas raíces en la comunidad y décadas de trabajo en construcción y mantenimiento de propiedades. La compañía combina ese conocimiento práctico con un enfoque moderno, una ejecución clara y una relación directa con cada cliente.',
+        'Construida sobre cinco décadas de experiencia panameña en construcción y propiedad, Vanguardia PTY aporta métodos y materiales modernos a cada proyecto. Desde la planificación y la construcción hasta la renovación y la gestión de propiedad, nos enfocamos en una ejecución clara y en aumentar el valor de su inmueble.',
     },
     segments: {
       kicker: 'Nuestros clientes',
-      heading: 'La obra, la propiedad y la operación necesitan claridad.',
+      heading: 'Responsabilidad clara y transparencia para todo tipo de propietario.',
     },
   },
   en: {
@@ -77,13 +78,14 @@ export const translations: Record<Locale, TranslationSet> = {
     },
     heritage: {
       kicker: 'Heritage • trust • accountability',
-      heading: 'Five decades of Panamanian experience. A new generation.',
+      heading:
+        'Five decades of Panamanian experience. Leading in modern methods and materials. Dedicated to increasing the value of your property.',
       copy:
-        'Vanguardia PTY is a new company built on the experience accumulated by a Panamanian family with deep roots in the community and decades of work in construction and property maintenance. The company combines that practical knowledge with a modern approach, clear execution and direct communication with each client.',
+        'Built on five decades of Panamanian construction and property experience, Vanguardia PTY brings modern methods and materials to every project. From planning and construction to renovation and property management, we focus on clear execution and on increasing the value of your property.',
     },
     segments: {
       kicker: 'Our clients',
-      heading: 'Construction, property and operations need clarity.',
+      heading: 'Clear accountability and transparency for every kind of property owner.',
     },
   },
   fr: {
@@ -108,13 +110,14 @@ export const translations: Record<Locale, TranslationSet> = {
     },
     heritage: {
       kicker: 'Patrimoine • confiance • responsabilité',
-      heading: 'Cinquante ans d’expérience panaméenne. Une nouvelle génération.',
+      heading:
+        'Cinquante ans d’expérience panaméenne. À l’avant-garde des méthodes et matériaux modernes. Dédiés à accroître la valeur de votre propriété.',
       copy:
-        'Vanguardia PTY est une nouvelle entreprise construite sur l’expérience accumulée par une famille panaméenne profondément ancrée dans la communauté et dans les travaux de construction et d’entretien immobilier. L’entreprise combine cette connaissance pratique avec une approche moderne, une exécution claire et une communication directe avec chaque client.',
+        'S’appuyant sur cinq décennies d’expérience panaméenne en construction et en immobilier, Vanguardia PTY apporte des méthodes et des matériaux modernes à chaque projet. De la planification et la construction à la rénovation et la gestion immobilière, nous privilégions une exécution claire et l’accroissement de la valeur de votre bien.',
     },
     segments: {
       kicker: 'Nos clients',
-      heading: 'Le chantier, la propriété et l’exploitation exigent de la clarté.',
+      heading: 'Responsabilité claire et transparence pour chaque type de propriétaire.',
     },
   },
 };

@@ -38,13 +38,11 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
       <section className="section intro-section">
         <div className="container two-column">
           <div>
-            <p className="section-kicker">Herencia • confianza • responsabilidad</p>
-            <h2>Cinco décadas de experiencia panameña. Una nueva generación.</h2>
+            <p className="section-kicker">{dict.heritage.kicker}</p>
+            <h2>{dict.heritage.heading}</h2>
           </div>
           <div>
-            <p>
-              Vanguardia PTY es una nueva empresa construida sobre la experiencia acumulada por una familia panameña con profundas raíces en la comunidad y décadas de trabajo en construcción y mantenimiento de propiedades. La compañía combina ese conocimiento práctico con un enfoque moderno, una ejecución clara y una relación directa con cada cliente.
-            </p>
+            <p>{dict.heritage.copy}</p>
           </div>
         </div>
       </section>
@@ -52,8 +50,8 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
       <section className="section">
         <div className="container">
           <div className="section-heading">
-            <p className="section-kicker">Nuestros clientes</p>
-            <h2>La obra, la propiedad y la operación necesitan claridad.</h2>
+            <p className="section-kicker">{dict.segments.kicker}</p>
+            <h2>{dict.segments.heading}</h2>
           </div>
 
           <div className="segment-grid">

@@ -38,7 +38,7 @@ export const translations: Record<Locale, TranslationSet> = {
     hero: {
       eyebrow: 'Panamá • Construcción • Propiedad • Mantenimiento',
       title: 'Construir. Mantener. Gestionar.',
-      subtitle: 'Un solo responsable para construcción, propiedad y servicios de edificación en Panamá.',
+      subtitle: 'Un solo responsable para planificación, construcción, renovación y gestión de propiedad en Panamá.',
       primary: 'Solicitar consulta',
       secondary: 'Explorar servicios',
       meta1: 'Más de 50 años de experiencia familiar',
@@ -69,7 +69,7 @@ export const translations: Record<Locale, TranslationSet> = {
     hero: {
       eyebrow: 'Panama • Construction • Property • Maintenance',
       title: 'Build. Maintain. Manage.',
-      subtitle: 'One accountable partner for construction, property and building services in Panama.',
+      subtitle: 'One accountable partner for planning, construction, renovation, and property management in Panama.',
       primary: 'Request a consultation',
       secondary: 'Explore services',
       meta1: 'More than 50 years of family experience',
@@ -100,7 +100,7 @@ export const translations: Record<Locale, TranslationSet> = {
     hero: {
       eyebrow: 'Panama • Construction • Propriété • Maintenance',
       title: 'Construire. Entretenir. Gérer.',
-      subtitle: 'Un seul interlocuteur responsable pour la construction, la propriété et les services immobiliers au Panama.',
+      subtitle: 'Un seul interlocuteur responsable pour la planification, la construction, la rénovation et la gestion immobilière au Panama.',
       primary: 'Demander une consultation',
       secondary: 'Découvrir les services',
       meta1: 'Plus de 50 ans d’expérience familiale',

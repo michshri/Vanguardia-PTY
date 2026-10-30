@@ -2,7 +2,18 @@ export const locales = ['es', 'en', 'fr'] as const;
 export type Locale = (typeof locales)[number];
 
 export type TranslationSet = {
-  nav: { home: string; services: string; segments: string; projects: string; about: string; contact: string; whatsapp: string; request: string };
+  nav: {
+    home: string;
+    services: string;
+    segments: string;
+    projects: string;
+    about: string;
+    contact: string;
+    whatsapp: string;
+    request: string;
+    menu: string;
+    close: string;
+  };
   hero: {
     eyebrow: string;
     title: string;
@@ -34,6 +45,8 @@ export const translations: Record<Locale, TranslationSet> = {
       contact: 'Contacto',
       whatsapp: 'WhatsApp',
       request: 'Solicitar consulta',
+      menu: 'Abrir menú',
+      close: 'Cerrar menú',
     },
     hero: {
       eyebrow: 'Panamá • Construcción • Propiedad • Mantenimiento',
@@ -66,6 +79,8 @@ export const translations: Record<Locale, TranslationSet> = {
       contact: 'Contact',
       whatsapp: 'WhatsApp',
       request: 'Request a consultation',
+      menu: 'Open menu',
+      close: 'Close menu',
     },
     hero: {
       eyebrow: 'Panama • Construction • Property • Maintenance',
@@ -98,6 +113,8 @@ export const translations: Record<Locale, TranslationSet> = {
       contact: 'Contact',
       whatsapp: 'WhatsApp',
       request: 'Demander une consultation',
+      menu: 'Ouvrir le menu',
+      close: 'Fermer le menu',
     },
     hero: {
       eyebrow: 'Panama • Construction • Propriété • Maintenance',

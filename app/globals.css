@@ -156,6 +156,82 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.04e
   flex-wrap: wrap;
 }
 
+.menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(23, 28, 34, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.site-header.is-open .menu-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header.is-open .menu-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header.is-open .menu-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  border-top: 1px solid rgba(23, 28, 34, 0.08);
+  background: rgba(239, 237, 232, 0.98);
+}
+
+.mobile-nav-inner {
+  display: grid;
+  gap: 22px;
+  padding: 18px 0 28px;
+}
+
+.mobile-nav-links {
+  display: grid;
+  gap: 4px;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(23, 28, 34, 0.08);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+}
+
+.mobile-nav-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.mobile-nav-actions .language-switcher {
+  justify-self: start;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -595,7 +671,30 @@ h2 {
 }
 
 @media (max-width: 900px) {
-  .main-nav { display: none; }
+  .main-nav,
+  .desktop-actions {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav.is-open {
+    display: block;
+  }
+
+  .header-inner {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    text-align: left;
+    min-height: 72px;
+  }
+
+  .brand-mark img {
+    width: auto;
+    height: 44px;
+  }
 
   .segment-grid,
   .service-grid,
@@ -609,8 +708,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .cta-band-inner,
-  .header-inner {
+  .cta-band-inner {
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
@@ -627,8 +725,9 @@ h2 {
   .btn { width: 100%; }
 
   .cta-row,
-  .cta-actions,
-  .header-actions { width: 100%; }
+  .cta-actions { width: 100%; }
+
+  .mobile-nav-actions .btn { width: 100%; }
 
   .hero-content h1 { font-size: 2.8rem; }
 }

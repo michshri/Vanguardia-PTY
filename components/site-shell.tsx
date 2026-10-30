@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
@@ -14,7 +14,7 @@ const localeLabels = [
   { code: 'fr', label: 'FR' },
 ] as const;
 
-function LocaleSwitcher() {
+function LocaleSwitcher({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
 
@@ -40,6 +40,7 @@ function LocaleSwitcher() {
           key={locale.code}
           href={getLocaleHref(locale.code)}
           className={`lang-pill ${activeLang === locale.code || (!activeLang && locale.code === 'es') ? 'active' : ''}`}
+          onClick={onNavigate}
         >
           {locale.label}
         </Link>
@@ -49,9 +50,11 @@ function LocaleSwitcher() {
 }
 
 function SiteHeaderInner() {
+  const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
   const locale = resolveLocale(searchParams.get('lang'));
   const dict = getDictionary(locale);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
     { href: '/', label: dict.nav.home },
@@ -62,10 +65,23 @@ function SiteHeaderInner() {
     { href: '/contacto', label: dict.nav.contact },
   ];
 
+  const closeMenu = () => setMenuOpen(false);
+
+  const queryKey = searchParams.toString();
+
+  useEffect(() => {
+    closeMenu();
+  }, [pathname, queryKey]);
+
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen);
+    return () => document.body.classList.remove('menu-open');
+  }, [menuOpen]);
+
   return (
-    <header className="site-header">
+    <header className={`site-header${menuOpen ? ' is-open' : ''}`}>
       <div className="container header-inner">
-        <Link href={withLang('/', locale)} className="brand" aria-label="Vanguardia PTY home">
+        <Link href={withLang('/', locale)} className="brand" aria-label="Vanguardia PTY home" onClick={closeMenu}>
           <span className="brand-mark" aria-hidden="true">
             <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={220} height={60} priority />
           </span>
@@ -79,7 +95,7 @@ function SiteHeaderInner() {
           ))}
         </nav>
 
-        <div className="header-actions">
+        <div className="header-actions desktop-actions">
           <LocaleSwitcher />
           <a
             className="btn btn-secondary"
@@ -92,6 +108,47 @@ function SiteHeaderInner() {
           <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
             {dict.nav.request}
           </Link>
+        </div>
+
+        <button
+          type="button"
+          className="menu-toggle"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+          aria-label={menuOpen ? dict.nav.close : dict.nav.menu}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+        </button>
+      </div>
+
+      <div id="mobile-nav" className={`mobile-nav${menuOpen ? ' is-open' : ''}`} hidden={!menuOpen}>
+        <div className="container mobile-nav-inner">
+          <nav className="mobile-nav-links" aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <Link key={item.href} href={withLang(item.href, locale)} className="mobile-nav-link" onClick={closeMenu}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mobile-nav-actions">
+            <LocaleSwitcher onNavigate={closeMenu} />
+            <a
+              className="btn btn-secondary"
+              href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta."
+              target="_blank"
+              rel="noreferrer"
+              onClick={closeMenu}
+            >
+              {dict.nav.whatsapp}
+            </a>
+            <Link className="btn btn-primary" href={withLang('/contacto', locale)} onClick={closeMenu}>
+              {dict.nav.request}
+            </Link>
+          </div>
         </div>
       </div>
     </header>
@@ -109,13 +166,11 @@ export function SiteHeader() {
                 <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={220} height={60} priority />
               </span>
             </Link>
-            <div className="header-actions">
-              <div className="language-switcher" aria-label="Language selector">
-                <span className="lang-pill active">ES</span>
-                <span className="lang-pill">EN</span>
-                <span className="lang-pill">FR</span>
-              </div>
-            </div>
+            <button type="button" className="menu-toggle" aria-label="Open menu" disabled>
+              <span className="menu-toggle-bar" />
+              <span className="menu-toggle-bar" />
+              <span className="menu-toggle-bar" />
+            </button>
           </div>
         </header>
       }

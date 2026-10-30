@@ -1,15 +1,10 @@
 import Link from 'next/link';
-import { serviceAreas } from '@/lib/site-data';
-import { defaultLocale, type Locale } from '@/lib/translations';
+import { resolveLocale, withLang } from '@/lib/locale';
+import { getServiceAreas } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Servicios',
   description: 'Servicios de construcción, mantenimiento, gestión de proyectos y obras especializadas para propiedades en Panamá.',
-};
-
-const resolveLocale = (lang?: string): Locale => {
-  const value = (lang ?? '').toLowerCase();
-  return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
 const copy = {
@@ -37,6 +32,7 @@ export default async function ServiciosPage({ searchParams }: { searchParams?: P
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
+  const serviceAreas = getServiceAreas(locale);
 
   return (
     <>
@@ -50,15 +46,17 @@ export default async function ServiciosPage({ searchParams }: { searchParams?: P
 
       <section className="page-content">
         <div className="container service-grid">
-          {serviceAreas.map((area) => (
+          {serviceAreas.map((area, index) => (
             <article key={area.slug} className="service-card">
-              <div className="service-icon">0{serviceAreas.indexOf(area) + 1}</div>
+              <div className="service-icon">0{index + 1}</div>
               <h3>{area.title}</h3>
               <p>{area.summary}</p>
               <ul>
-                {area.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                {area.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
               </ul>
-              <Link href={`${area.href}${resolvedParams?.lang ? `?lang=${locale}` : ''}`}>{text.cta}</Link>
+              <Link href={withLang(area.href, locale)}>{text.cta}</Link>
             </article>
           ))}
         </div>

@@ -1,15 +1,10 @@
 import Link from 'next/link';
-import { customerSegments } from '@/lib/site-data';
-import { defaultLocale, type Locale } from '@/lib/translations';
+import { resolveLocale, withLang } from '@/lib/locale';
+import { getCustomerSegments } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Quiénes servimos',
   description: 'Vanguardia atiende necesidades residenciales, comerciales, industriales y de PH en Panamá con un enfoque de propiedad y coordinación responsable.',
-};
-
-const resolveLocale = (lang?: string): Locale => {
-  const value = (lang ?? '').toLowerCase();
-  return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
 const copy = {
@@ -37,6 +32,7 @@ export default async function SegmentsPage({ searchParams }: { searchParams?: Pr
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
+  const customerSegments = getCustomerSegments(locale);
 
   return (
     <>
@@ -56,9 +52,13 @@ export default async function SegmentsPage({ searchParams }: { searchParams?: Pr
               <h3>{segment.title}</h3>
               <p>{segment.blurb}</p>
               <ul>
-                {segment.problems.map((problem) => <li key={problem}>{problem}</li>)}
+                {segment.problems.map((problem) => (
+                  <li key={problem}>{problem}</li>
+                ))}
               </ul>
-              <Link href={`${segment.href}${resolvedParams?.lang ? `?lang=${locale}` : ''}`}>{text.cta} {segment.title}</Link>
+              <Link href={withLang(segment.href, locale)}>
+                {text.cta} {segment.title}
+              </Link>
             </article>
           ))}
         </div>

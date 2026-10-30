@@ -1,13 +1,9 @@
-import { defaultLocale, type Locale } from '@/lib/translations';
+import { resolveLocale } from '@/lib/locale';
+import { getHomeExtras } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Proyectos',
   description: 'Portafolio de trabajos, proyectos y experiencias de Vanguardia en construcción, mantenimiento y obras especializadas en Panamá.',
-};
-
-const resolveLocale = (lang?: string): Locale => {
-  const value = (lang ?? '').toLowerCase();
-  return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
 const copy = {
@@ -32,6 +28,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams?: Pr
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
+  const extras = getHomeExtras(locale);
 
   return (
     <>
@@ -45,12 +42,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams?: Pr
 
       <section className="page-content">
         <div className="container project-grid">
-          {[
-            { title: 'Renovación residencial', category: 'Residencial', type: 'Renovación' },
-            { title: 'Mejora de propiedad comercial', category: 'Comercial & Industrial', type: 'Construcción' },
-            { title: 'Mantenimiento general de PH', category: 'PH', type: 'Mantenimiento' },
-            { title: 'Impermeabilización y recubrimientos', category: 'Obras Especializadas', type: 'Especializado' },
-          ].map((project) => (
+          {extras.projects.cards.map((project) => (
             <article key={project.title} className="project-card">
               <div className="project-image" aria-hidden="true" />
               <div className="project-content">

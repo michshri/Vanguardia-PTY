@@ -1,14 +1,10 @@
 import Link from 'next/link';
-import { defaultLocale, type Locale } from '@/lib/translations';
+import { resolveLocale } from '@/lib/locale';
+import { getHomeExtras } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Contacto',
   description: 'Solicite una consulta con Vanguardia PTY para construir, mantener o gestionar su propiedad en Panamá.',
-};
-
-const resolveLocale = (lang?: string): Locale => {
-  const value = (lang ?? '').toLowerCase();
-  return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
 const copy = {
@@ -66,6 +62,7 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
+  const form = getHomeExtras(locale).contactForm;
 
   return (
     <>
@@ -84,45 +81,44 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
             <form className="form-grid">
               <label className="field">
                 {text.name}
-                <input type="text" name="name" placeholder="Su nombre" />
+                <input type="text" name="name" placeholder={form.namePh} />
               </label>
               <label className="field">
                 {text.email}
-                <input type="email" name="email" placeholder="correo@ejemplo.com" />
+                <input type="email" name="email" placeholder={form.emailPh} />
               </label>
               <label className="field">
                 {text.company}
-                <input type="text" name="company" placeholder="Empresa, PH o propiedad" />
+                <input type="text" name="company" placeholder={form.companyPh} />
               </label>
               <label className="field">
                 {text.phone}
-                <input type="tel" name="phone" placeholder="+507 ..." />
+                <input type="tel" name="phone" placeholder={form.phonePh} />
               </label>
               <label className="field">
                 {text.clientType}
                 <select name="segment">
-                  <option>Residencial</option>
-                  <option>Comercial & Industrial</option>
-                  <option>PH</option>
-                  <option>Otro</option>
+                  {form.clientOptions.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label className="field">
                 {text.requiredService}
                 <select name="service">
-                  <option>Construcción & Renovación</option>
-                  <option>Mantenimiento & Reparaciones</option>
-                  <option>Gestión de Propiedad</option>
-                  <option>Gestión de Proyectos</option>
-                  <option>Obras Especializadas</option>
+                  {form.serviceOptions.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label className="field full">
                 {text.description}
-                <textarea name="message" placeholder="Cuéntenos qué necesita, cuál es la propiedad o el requisito principal." />
+                <textarea name="message" placeholder={form.messagePh} />
               </label>
               <div className="field full">
-                <button className="btn btn-primary" type="submit">{text.submit}</button>
+                <button className="btn btn-primary" type="submit">
+                  {text.submit}
+                </button>
               </div>
             </form>
           </div>
@@ -132,10 +128,17 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
             <ul>
               <li>Email: contacto@vanguardia-pty.com</li>
               <li>WhatsApp: +507 0000-0000</li>
-              <li>Panamá</li>
+              <li>{locale === 'en' || locale === 'fr' ? 'Panama' : 'Panamá'}</li>
             </ul>
             <div style={{ marginTop: 28 }}>
-              <Link className="btn btn-secondary" href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta." target="_blank" rel="noreferrer">{text.whatsapp}</Link>
+              <Link
+                className="btn btn-secondary"
+                href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta."
+                target="_blank"
+                rel="noreferrer"
+              >
+                {text.whatsapp}
+              </Link>
             </div>
           </aside>
         </div>

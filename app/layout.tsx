@@ -1,5 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { DocumentLang } from '@/components/document-lang';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
@@ -36,6 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body>
+        <Suspense fallback={null}>
+          <DocumentLang />
+        </Suspense>
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

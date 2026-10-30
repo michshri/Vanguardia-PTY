@@ -1,13 +1,9 @@
-import { defaultLocale, type Locale } from '@/lib/translations';
+import { resolveLocale } from '@/lib/locale';
+import { getHomeExtras } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Nosotros',
   description: 'Vanguardia PTY es una nueva generación de una experiencia panameña de más de 50 años en construcción, propiedad y mantenimiento.',
-};
-
-const resolveLocale = (lang?: string): Locale => {
-  const value = (lang ?? '').toLowerCase();
-  return value === 'en' || value === 'fr' ? value : defaultLocale;
 };
 
 const copy = {
@@ -50,6 +46,7 @@ export default async function AboutPage({ searchParams }: { searchParams?: Promi
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
+  const extras = getHomeExtras(locale);
 
   return (
     <>
@@ -75,12 +72,9 @@ export default async function AboutPage({ searchParams }: { searchParams?: Promi
           <aside className="info-panel">
             <h3>{text.values}</h3>
             <ul>
-              <li>Panamá</li>
-              <li>Familia</li>
-              <li>Experiencia</li>
-              <li>Responsabilidad</li>
-              <li>Ejecuta con criterio</li>
-              <li>Mirada a largo plazo</li>
+              {extras.aboutValues.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
             </ul>
           </aside>
         </div>

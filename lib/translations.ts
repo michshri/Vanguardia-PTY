@@ -39,7 +39,7 @@ export const translations: Record<Locale, TranslationSet> = {
     nav: {
       home: 'Inicio',
       services: 'Servicios',
-      segments: 'Quiénes Servimos',
+      segments: 'Clientes',
       projects: 'Proyectos',
       about: 'Nosotros',
       contact: 'Contacto',
@@ -73,7 +73,7 @@ export const translations: Record<Locale, TranslationSet> = {
     nav: {
       home: 'Home',
       services: 'Services',
-      segments: 'Who We Serve',
+      segments: 'Customers',
       projects: 'Projects',
       about: 'About',
       contact: 'Contact',

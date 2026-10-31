@@ -10,20 +10,20 @@ export const metadata = {
 const copy = {
   es: {
     kicker: 'Servicios',
-    title: 'Soluciones para la propiedad y la ejecución.',
-    intro: 'Vanguardia responde a necesidades de construcción, mantenimiento, gestión y obras técnicas con una sola referencia clara y responsable.',
+    title: 'Construir. Renovar. Mantener. Gestionar.',
+    intro: 'Cinco servicios claros. Un solo responsable para planificar, ejecutar y proteger el valor de la propiedad.',
     cta: 'Ver servicio',
   },
   en: {
     kicker: 'Services',
-    title: 'Solutions for property and execution.',
-    intro: 'Vanguardia responds to construction, maintenance, management and technical work needs with one clear, accountable point of reference.',
+    title: 'Build. Renovate. Maintain. Manage.',
+    intro: 'Five clear services. One accountable partner to plan, execute and protect the value of the property.',
     cta: 'View service',
   },
   fr: {
     kicker: 'Services',
-    title: 'Des solutions pour la propriété et l’exécution.',
-    intro: 'Vanguardia répond aux besoins de construction, maintenance, gestion et travaux techniques avec un seul interlocuteur clair et responsable.',
+    title: 'Construire. Rénover. Entretenir. Gérer.',
+    intro: 'Cinq services clairs. Un seul responsable pour planifier, exécuter et protéger la valeur du bien.',
     cta: 'Voir le service',
   },
 } as const;

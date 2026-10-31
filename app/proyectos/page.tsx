@@ -1,26 +1,33 @@
-import { resolveLocale } from '@/lib/locale';
-import { getHomeExtras } from '@/lib/localized-content';
+import Link from 'next/link';
+import { resolveLocale, withLang } from '@/lib/locale';
+import { getCustomerSegments, getServiceAreas } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Proyectos',
-  description: 'Portafolio de trabajos, proyectos y experiencias de Vanguardia en construcción, mantenimiento y obras especializadas en Panamá.',
+  description: 'Portafolio de trabajos, proyectos y experiencias de Vanguardia en construcción, mantenimiento y gestión de propiedad en Panamá.',
 };
 
 const copy = {
   es: {
     kicker: 'Proyectos',
-    title: 'Trabajos en marcha y proyectos por venir.',
-    intro: 'El portafolio está estructurado para mostrar proyectos por tipo y segmento, con la posibilidad de añadir caso a caso según el trabajo realizado.',
+    title: 'Trabajos organizados por cliente y por servicio.',
+    intro: 'Explore nuestros segmentos de clientes y servicios. Los casos de proyecto se irán añadiendo según el trabajo realizado.',
+    customers: 'Por tipo de cliente',
+    services: 'Por tipo de servicio',
   },
   en: {
     kicker: 'Projects',
-    title: 'Ongoing work and upcoming projects.',
-    intro: 'The portfolio is structured to showcase work by type and segment, with room to add case-by-case examples as each project evolves.',
+    title: 'Work organized by customer and by service.',
+    intro: 'Explore our customer segments and services. Project case studies will be added as completed work grows.',
+    customers: 'By customer type',
+    services: 'By service type',
   },
   fr: {
     kicker: 'Projets',
-    title: 'Travaux en cours et projets à venir.',
-    intro: 'Le portfolio est structuré pour présenter les projets par type et segment, avec la possibilité d’ajouter des cas individuels selon les travaux réalisés.',
+    title: 'Des travaux organisés par client et par service.',
+    intro: 'Explorez nos segments clients et nos services. Les études de cas seront ajoutées au fil des travaux réalisés.',
+    customers: 'Par type de client',
+    services: 'Par type de service',
   },
 } as const;
 
@@ -28,7 +35,8 @@ export default async function ProjectsPage({ searchParams }: { searchParams?: Pr
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
-  const extras = getHomeExtras(locale);
+  const segments = getCustomerSegments(locale);
+  const services = getServiceAreas(locale);
 
   return (
     <>
@@ -41,17 +49,33 @@ export default async function ProjectsPage({ searchParams }: { searchParams?: Pr
       </section>
 
       <section className="page-content">
-        <div className="container project-grid">
-          {extras.projects.cards.map((project) => (
-            <article key={project.title} className="project-card">
-              <div className="project-image" aria-hidden="true" />
-              <div className="project-content">
-                <span className="mini-tag">{project.category}</span>
-                <h3>{project.title}</h3>
-                <p>{project.type}</p>
-              </div>
-            </article>
-          ))}
+        <div className="container">
+          <div className="section-heading">
+            <h2>{text.customers}</h2>
+          </div>
+          <div className="segment-grid">
+            {segments.map((segment) => (
+              <article key={segment.slug} className="segment-card">
+                <h3>{segment.title}</h3>
+                <p>{segment.blurb}</p>
+                <Link href={withLang(segment.href, locale)}>{segment.title}</Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="section-heading" style={{ marginTop: 48 }}>
+            <h2>{text.services}</h2>
+          </div>
+          <div className="service-grid">
+            {services.map((area, index) => (
+              <article key={area.slug} className="service-card">
+                <div className="service-icon">0{index + 1}</div>
+                <h3>{area.title}</h3>
+                <p>{area.summary}</p>
+                <Link href={withLang(area.href, locale)}>{area.title}</Link>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </>

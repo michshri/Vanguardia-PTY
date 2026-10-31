@@ -49,8 +49,8 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
       <section className="section">
         <div className="container">
           <div className="section-heading">
-            <p className="section-kicker">{dict.segments.kicker}</p>
-            <h2>{dict.segments.heading}</h2>
+            <p className="section-kicker">{extras.customers.kicker}</p>
+            <h2>{extras.customers.heading}</h2>
           </div>
 
           <div className="segment-grid">
@@ -59,14 +59,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                 <span className="mini-tag">{segment.title}</span>
                 <h3>{segment.title}</h3>
                 <p>{segment.blurb}</p>
-                <ul>
-                  {segment.problems.map((problem) => (
-                    <li key={problem}>{problem}</li>
-                  ))}
-                </ul>
-                <Link href={withLang(segment.href, locale)}>
-                  {extras.explore} {segment.title}
-                </Link>
+                <Link href={withLang(segment.href, locale)}>{extras.customers.cta}</Link>
               </article>
             ))}
           </div>
@@ -86,11 +79,6 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                 <div className="service-icon">0{index + 1}</div>
                 <h3>{area.title}</h3>
                 <p>{area.summary}</p>
-                <ul>
-                  {area.bullets.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
                 <Link href={withLang(area.href, locale)}>{extras.services.moreInfo}</Link>
               </article>
             ))}
@@ -111,62 +99,6 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                 <span className="checkmark">✓</span>
                 <p>{point}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section alt-section">
-        <div className="container">
-          <div className="section-heading narrow">
-            <p className="section-kicker">{extras.capability.kicker}</p>
-            <h2>{extras.capability.heading}</h2>
-          </div>
-
-          <div className="capability-grid">
-            {extras.capability.items.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="section-heading narrow">
-            <p className="section-kicker">{extras.process.kicker}</p>
-            <h2>{extras.process.heading}</h2>
-          </div>
-
-          <div className="process-grid">
-            {extras.process.steps.map((item) => (
-              <div key={item.step} className="process-card">
-                <span>{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section alt-section">
-        <div className="container">
-          <div className="section-heading">
-            <p className="section-kicker">{extras.projects.kicker}</p>
-            <h2>{extras.projects.heading}</h2>
-          </div>
-
-          <div className="project-grid">
-            {extras.projects.cards.map((project) => (
-              <article key={project.title} className="project-card">
-                <div className="project-image" aria-hidden="true" />
-                <div className="project-content">
-                  <span className="mini-tag">{project.category}</span>
-                  <h3>{project.title}</h3>
-                  <p>{project.type}</p>
-                </div>
-              </article>
             ))}
           </div>
         </div>

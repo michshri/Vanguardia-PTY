@@ -3,28 +3,28 @@ import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments } from '@/lib/localized-content';
 
 export const metadata = {
-  title: 'Quiénes servimos',
-  description: 'Vanguardia atiende necesidades residenciales, comerciales, industriales y de PH en Panamá con un enfoque de propiedad y coordinación responsable.',
+  title: 'Clientes',
+  description: 'Vanguardia atiende clientes residenciales, comerciales y de PH en Panamá con responsabilidad clara y transparencia.',
 };
 
 const copy = {
   es: {
-    kicker: 'Quiénes servimos',
-    title: 'Necesidades reales. Respuestas claras.',
-    intro: 'Vanguardia trabaja con clientes que necesitan planificación, ejecución y seguimiento bien gestionado para proteger sus propiedades y su operación.',
-    cta: 'Explorar',
+    kicker: 'Clientes',
+    title: 'Residencial. Comercial. PH.',
+    intro: 'Tres tipos de cliente. El mismo estándar: un solo responsable, alcance claro y ejecución transparente.',
+    cta: 'Ver',
   },
   en: {
-    kicker: 'Who we serve',
-    title: 'Real needs. Clear answers.',
-    intro: 'Vanguardia works with clients who need planning, execution and well-managed follow-through to protect their properties and operations.',
-    cta: 'Explore',
+    kicker: 'Customers',
+    title: 'Residential. Commercial. PH.',
+    intro: 'Three customer types. The same standard: one accountable partner, clear scope and transparent execution.',
+    cta: 'View',
   },
   fr: {
-    kicker: 'Qui nous servons',
-    title: 'Des besoins réels. Des réponses claires.',
-    intro: 'Vanguardia accompagne des clients qui ont besoin d’une planification, d’une exécution et d’un suivi bien géré pour protéger leurs biens et leur activité.',
-    cta: 'Explorer',
+    kicker: 'Clients',
+    title: 'Résidentiel. Commercial. PH.',
+    intro: 'Trois types de clients. Le même standard : un seul responsable, un périmètre clair et une exécution transparente.',
+    cta: 'Voir',
   },
 } as const;
 

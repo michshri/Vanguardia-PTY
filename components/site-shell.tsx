@@ -185,9 +185,7 @@ function SiteFooterInner() {
   const locale = resolveLocale(searchParams.get('lang'));
   const dict = getDictionary(locale);
   const extras = getHomeExtras(locale);
-  const services = getServiceAreas(locale)
-    .filter((area) => area.slug !== 'obras-especializadas')
-    .map((area) => ({ href: area.href, label: area.title }));
+  const services = getServiceAreas(locale).map((area) => ({ href: area.href, label: area.title }));
   const segments = getCustomerSegments(locale).map((segment) => ({ href: segment.href, label: segment.title }));
 
   return (

@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Vanguardia website (`vanguardia-pty`)
 
-Marketing website for Vanguardia, a Panama-based family construction and property services business. Hosted on Vercel, source on GitHub. For detailed project knowledge and working method, use the `vanguardia-website` subagent (`.cursor/agents/vanguardia-website.md`).
+Marketing website for **Vanguardia Construction Group** (singular "Construction"), a Panama-based family construction and property services business. Domain: **vanguardiapty.com**. Use this exact company name in content, metadata and branding; never "Constructions" or "Vanguardia PTY". Hosted on Vercel, source on GitHub. For detailed project knowledge and working method, use the `vanguardia-website` subagent (`.cursor/agents/vanguardia-website.md`).
 
 ## Stack
 

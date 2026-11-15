@@ -10,7 +10,12 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Vanguardia website (`vanguardia-pty`)
 
-Marketing website for **Vanguardia Constructions Group** ("Constructions" in plural, as on the logo), a Panama-based family construction and property services business. Domain and all email addresses: **vanguardiapty.com** (no hyphen). Use this exact company name in content, metadata and branding; never "Construction Group" (singular) or "Vanguardia PTY". Hosted on Vercel, source on GitHub. For detailed project knowledge and working method, use the `vanguardia-website` subagent (`.cursor/agents/vanguardia-website.md`).
+Marketing website for **Vanguardia Constructions Group** ("Constructions" in plural, as on the logo), a Panama-based family construction and property services business. Domain and all email addresses: **vanguardiapty.com** (no hyphen).
+
+- "Vanguardia Constructions Group" is the official company name. Use it everywhere: content, metadata, branding, copyright and legal notices. Never use the singular "Construction Group".
+- "Vanguardia PTY" and `vanguardia-pty.com` have never existed. Do not use them, and do not add redirects or references for them. Where they appear in the code, they are errors to replace. The repository and npm package are named `vanguardia-pty` for technical reasons only.
+
+Hosted on Vercel, source on GitHub. For detailed project knowledge and working method, use the `vanguardia-website` subagent (`.cursor/agents/vanguardia-website.md`).
 
 ## Stack
 
@@ -24,7 +29,7 @@ Marketing website for **Vanguardia Constructions Group** ("Constructions" in plu
 1. **Inspect before changing.** Read the relevant code and check side effects on navigation, footer, translations (all three languages), SEO (metadata, `app/sitemap.ts`, redirects in `next.config.mjs`) and shared styles.
 2. **Preserve working functionality.** Do not rebuild or restructure working parts because another approach is preferred. Reuse and extend existing components and patterns.
 3. **Keep it simple.** Choose the simplest robust solution that fits the existing architecture. Propose major architectural changes (routing, i18n approach, new services) before implementing them.
-4. **Never invent business content.** No certifications, clients, projects, awards, statistics, guarantees, phone numbers or claims beyond what is in the repository (including `Vanguardia PTY - One Pager.md`) or supplied by the owner. Flag placeholders instead of filling them.
+4. **Never invent business content.** No certifications, clients, projects, awards, statistics, guarantees, contact details or claims beyond what is in the repository (including `Vanguardia PTY - One Pager.md`) or supplied by the owner. Do not substitute contact details; keep existing placeholders clearly identified until the owner supplies the real ones.
 5. **Multilingual by default.** Every user-facing string must exist in Spanish, English and French, written naturally for each market — no literal translations or hardcoded single-language text.
 6. **Dependencies.** Do not install, remove, upgrade or override packages without explaining why and the consequences, and getting approval.
 7. **No hidden errors.** Never suppress warnings, disable lint/type rules or set `ignoreBuildErrors` to make a build pass. Fix the cause.

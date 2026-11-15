@@ -9,10 +9,12 @@ Follow `AGENTS.md` in the repository root at all times. This file adds project k
 
 ## Business context
 
-- Formal company name: **Vanguardia Constructions Group** ("Constructions" in plural, matching the logo). Domain and all email addresses: **vanguardiapty.com** (no hyphen). A new Panama-based construction and property services company built on roughly 50 years of family experience.
+- Official company name: **Vanguardia Constructions Group** ("Constructions" in plural, matching the logo), used everywhere including legal notices. Domain and all email addresses: **vanguardiapty.com** (no hyphen). "Vanguardia PTY" and `vanguardia-pty.com` have never existed. A new Panama-based construction and property services company built on roughly 50 years of family experience.
 - Approved positioning source: `Vanguardia PTY - One Pager.md`. Core idea: one accountable partner from start to finish.
-- Target service categories (owner brief): Construction & Renovation; Maintenance & Repairs; Property Management; Project Management; Specialized Building Works.
-- Customer segments: Residential; Commercial (including industrial); PH (Propiedad Horizontal — condominium and homeowners' association properties).
+- Five service categories: Construction & Renovation; Maintenance & Repairs; Property Management; Project Management; Specialized Building Works.
+- Three customer segments: Residential; Commercial (including Industrial); PH (Propiedad Horizontal — condominium and homeowners' association properties).
+- Services and segments are two separate dimensions. Visitors must be able to navigate by either, without duplicating content between them.
+- Contact details (phone, WhatsApp, email) are placeholders until the owner provides real ones. Never invent or substitute them.
 - Family experience includes PH developments, industrial properties, specialist coatings and green roofs. Do not turn this into project references, client names or statistics.
 - Primary market: Panama. Spanish is the default language; English and French are secondary.
 
@@ -56,14 +58,12 @@ For code reviews, focus on regressions, missing translations, broken links or re
 
 ## Known issues to keep in mind
 
-- Company name and domain are wrong in the code. The site uses "Vanguardia PTY" (layout metadata, header and footer, logo alt text, page copy in `lib/` and `app/`, WhatsApp messages, README, LICENSE, one-pager) and `www.vanguardia-pty.com` (layout `metadataBase` and Open Graph URL, `app/robots.ts`, `app/sitemap.ts`, contact email in the footer and contact page, `vercel.json`, `netlify.toml`). The logo files already read "VANGUARDIA CONSTRUCTIONS GROUP", which is correct.
-- The contact email `contacto@vanguardia-pty.com` uses the old domain. Email addresses use `@vanguardiapty.com`; confirm the mailbox name (currently `contacto`) with the owner when changing it.
-
+- Company name and domain are wrong in the code; replace them, with no redirects for the non-existent domain. The site uses "Vanguardia PTY" (layout metadata, header and footer, logo alt text, page copy in `lib/` and `app/`, WhatsApp messages, README, LICENSE, one-pager) and `www.vanguardia-pty.com` (layout `metadataBase` and Open Graph URL, `app/robots.ts`, `app/sitemap.ts`, contact email in the footer and contact page, `vercel.json`, `netlify.toml`). The logo files already read "VANGUARDIA CONSTRUCTIONS GROUP", which is correct.
+- The contact email `contacto@vanguardia-pty.com` and WhatsApp `+507 0000-0000` are placeholders. Keep them clearly identified as placeholders until the owner provides the real details.
 - Service structure in code (Build, Renovate, Maintain, Manage property, Project management) does not match the owner's five target categories; there is no Specialized Building Works page. Restructuring needs owner approval.
-- The contact form has no submission handling: it submits to the same page and the data goes nowhere.
-- WhatsApp number is a placeholder (`+507 0000-0000`, `wa.me/50700000000`); the contact email has not been confirmed.
+- The contact form has no submission handling: it submits to the same page, the entered data appears in the URL, and enquiries are not delivered. Priority fix; do not add temporary workarounds.
 - Every page inherits `canonical: '/'` from the root layout, so all pages declare the home page as their canonical URL. Service and segment detail pages have no title or description of their own.
 - Metadata and the server-rendered `<html lang>` are Spanish only; there are no `hreflang` alternates for English and French.
 - Linting does not run (see `AGENTS.md`).
-- `npm audit` reports advisories in `next`, `sharp` and `source-map-js`; fixing them means updating dependencies, which needs approval.
+- `npm audit` reports advisories in `next`, `sharp`, `source-map-js` and `zod` (fixable without major upgrades) and in lint tooling (development only). Fixing them means updating dependencies, which needs approval.
 - Text-only "projects" page; no real project imagery yet.

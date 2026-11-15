@@ -6,6 +6,6 @@
   "outputDirectory": ".next",
   "regions": ["iad1"],
   "env": {
-    "NEXT_PUBLIC_SITE_URL": "https://www.vanguardia-pty.com"
+    "NEXT_PUBLIC_SITE_URL": "https://www.vanguardiapty.com"
   }
 }

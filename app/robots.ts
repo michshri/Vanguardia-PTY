@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.vanguardia-pty.com/sitemap.xml',
-    host: 'https://www.vanguardia-pty.com',
+    sitemap: 'https://www.vanguardiapty.com/sitemap.xml',
+    host: 'https://www.vanguardiapty.com',
   };
 }

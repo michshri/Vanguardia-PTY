@@ -126,7 +126,7 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
           <aside className="info-panel">
             <h3>{text.direct}</h3>
             <ul>
-              <li>Email: contacto@vanguardia-pty.com</li>
+              <li>Email: contacto@vanguardiapty.com</li>
               <li>WhatsApp: +507 0000-0000</li>
               <li>{locale === 'en' || locale === 'fr' ? 'Panama' : 'Panamá'}</li>
             </ul>

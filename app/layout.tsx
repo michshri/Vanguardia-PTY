@@ -6,7 +6,7 @@ import { GoogleAnalytics } from '@/components/google-analytics';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.vanguardia-pty.com'),
+  metadataBase: new URL('https://www.vanguardiapty.com'),
   title: {
     default: 'Vanguardia PTY | Construcción, mantenimiento y gestión de propiedad en Panamá',
     template: '%s | Vanguardia PTY',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Vanguardia PTY',
     description:
       'Un solo responsable para construcción, mantenimiento y gestión de propiedad en Panamá.',
-    url: 'https://www.vanguardia-pty.com',
+    url: 'https://www.vanguardiapty.com',
     siteName: 'Vanguardia PTY',
     locale: 'es_PA',
     type: 'website',

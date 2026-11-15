@@ -229,7 +229,7 @@ function SiteFooterInner() {
               <Link href={withLang('/contacto', locale)}>{extras.footer.request}</Link>
             </li>
             <li>
-              <a href="mailto:contacto@vanguardia-pty.com">contacto@vanguardia-pty.com</a>
+              <a href="mailto:contacto@vanguardiapty.com">contacto@vanguardiapty.com</a>
             </li>
             <li>
               <a href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY" target="_blank" rel="noreferrer">

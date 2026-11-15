@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { segmentSlugs, serviceSlugs } from '@/lib/localized-content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.vanguardia-pty.com';
+  const baseUrl = 'https://www.vanguardiapty.com';
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

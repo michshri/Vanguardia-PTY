@@ -26,7 +26,7 @@ export default async function SegmentDetailPage({
 
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: 'linear-gradient(90deg, rgba(16,19,22,0.75), rgba(16,19,22,0.3)), url(https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1500&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${segment.image})` }}>
         <div className="container">
           <p className="section-kicker">{extras.segmentDetail.kicker}</p>
           <h1>{segment.title}</h1>

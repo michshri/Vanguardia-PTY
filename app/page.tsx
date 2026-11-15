@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { MediaCard } from '@/components/media-card';
+import { getSettings, getUi } from '@/lib/content';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
 import { getDictionary } from '@/lib/translations';
@@ -8,13 +10,14 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
   const locale = resolveLocale(resolvedParams?.lang);
   const dict = getDictionary(locale);
   const extras = getHomeExtras(locale);
+  const ui = getUi(locale);
+  const settings = getSettings();
   const segments = getCustomerSegments(locale);
   const services = getServiceAreas(locale);
 
   return (
     <>
-      <section className="hero-section">
-        <div className="hero-overlay" />
+      <section className="hero-section" style={{ backgroundImage: `linear-gradient(180deg, rgba(18,17,16,0.58), rgba(18,17,16,0.65)), url(${settings.heroImage})` }}>
         <div className="container hero-content">
           <div className="eyebrow">{dict.hero.eyebrow}</div>
           <h1>{dict.hero.title}</h1>
@@ -23,7 +26,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
             <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
               {dict.hero.primary}
             </Link>
-            <Link className="btn btn-secondary" href={withLang('/servicios', locale)}>
+            <Link className="btn btn-secondary btn-secondary-light" href={withLang('/servicios', locale)}>
               {dict.hero.secondary}
             </Link>
           </div>
@@ -55,12 +58,15 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
 
           <div className="segment-grid">
             {segments.map((segment) => (
-              <article key={segment.slug} className="segment-card">
-                <span className="mini-tag">{segment.title}</span>
-                <h3>{segment.title}</h3>
-                <p>{segment.blurb}</p>
-                <Link href={withLang(segment.href, locale)}>{extras.customers.cta}</Link>
-              </article>
+              <MediaCard
+                key={segment.slug}
+                href={withLang(segment.href, locale)}
+                image={segment.image}
+                title={segment.title}
+                description={segment.blurb}
+                cta={extras.customers.cta}
+                imageHeight={260}
+              />
             ))}
           </div>
         </div>
@@ -74,13 +80,15 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           </div>
 
           <div className="service-grid">
-            {services.map((area, index) => (
-              <article key={area.slug} className="service-card">
-                <div className="service-icon">0{index + 1}</div>
-                <h3>{area.title}</h3>
-                <p>{area.summary}</p>
-                <Link href={withLang(area.href, locale)}>{extras.services.moreInfo}</Link>
-              </article>
+            {services.map((area) => (
+              <MediaCard
+                key={area.slug}
+                href={withLang(area.href, locale)}
+                image={area.image}
+                title={area.title}
+                description={area.summary}
+                cta={extras.services.moreInfo}
+              />
             ))}
           </div>
         </div>
@@ -93,12 +101,11 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
             <h2>{extras.why.heading}</h2>
           </div>
 
-          <div className="points-grid">
-            {extras.why.points.map((point) => (
-              <div key={point} className="value-point">
-                <span className="checkmark">✓</span>
-                <p>{point}</p>
-              </div>
+          <div className="why-grid">
+            {ui.why.points.map((point) => (
+              <article key={point} className="why-card">
+                <h3>{point}</h3>
+              </article>
             ))}
           </div>
         </div>
@@ -114,7 +121,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
             <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
               {extras.ctaBand.primary}
             </Link>
-            <Link className="btn btn-secondary" href={withLang('/contacto', locale)}>
+            <Link className="btn btn-secondary btn-secondary-light" href={withLang('/contacto', locale)}>
               {extras.ctaBand.secondary}
             </Link>
           </div>

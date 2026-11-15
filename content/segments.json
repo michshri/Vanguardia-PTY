@@ -1,0 +1,149 @@
+[
+  {
+    "slug": "residencial",
+    "href": "/quien-sirve/residencial",
+    "order": 1,
+    "active": true,
+    "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80",
+    "es": {
+      "title": "Residencial",
+      "blurb": "Propietarios y familias que necesitan construir, renovar, mantener o gestionar su vivienda con claridad y un solo responsable.",
+      "problems": [
+        "Mantenimiento acumulado",
+        "Obras sin seguimiento",
+        "Interrupciones en la vida diaria"
+      ],
+      "solutions": [
+        "Construir y renovar",
+        "Mantener preventivamente",
+        "Gestionar y coordinar proveedores"
+      ]
+    },
+    "en": {
+      "title": "Residential",
+      "blurb": "Owners and families who need to build, renovate, maintain or manage their home with clarity and one accountable partner.",
+      "problems": [
+        "Maintenance that piles up",
+        "Works without follow-through",
+        "Disruption to daily life"
+      ],
+      "solutions": [
+        "Build and renovate",
+        "Maintain preventively",
+        "Manage and coordinate vendors"
+      ]
+    },
+    "fr": {
+      "title": "Résidentiel",
+      "blurb": "Propriétaires et familles qui ont besoin de construire, rénover, entretenir ou gérer leur logement avec clarté et un seul responsable.",
+      "problems": [
+        "Maintenance qui s’accumule",
+        "Travaux sans suivi",
+        "Perturbations du quotidien"
+      ],
+      "solutions": [
+        "Construire et rénover",
+        "Entretenir de façon préventive",
+        "Gérer et coordonner les prestataires"
+      ]
+    }
+  },
+  {
+    "slug": "comercial",
+    "href": "/quien-sirve/comercial",
+    "order": 2,
+    "active": true,
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    "es": {
+      "title": "Comercial",
+      "blurb": "Empresas y administradores de inmuebles comerciales que necesitan obras y mantenimiento sin afectar la operación.",
+      "problems": [
+        "Reparaciones que detienen la operación",
+        "Obras sin planificación",
+        "Mantenimiento reactivo"
+      ],
+      "solutions": [
+        "Construir y renovar locales",
+        "Mantener instalaciones",
+        "Gestionar proyectos con un solo responsable"
+      ]
+    },
+    "en": {
+      "title": "Commercial",
+      "blurb": "Businesses and commercial property managers who need works and maintenance without disrupting operations.",
+      "problems": [
+        "Repairs that stop operations",
+        "Works without planning",
+        "Reactive maintenance"
+      ],
+      "solutions": [
+        "Build and renovate premises",
+        "Maintain facilities",
+        "Manage projects with one accountable partner"
+      ]
+    },
+    "fr": {
+      "title": "Commercial",
+      "blurb": "Entreprises et gestionnaires de biens commerciaux qui ont besoin de travaux et de maintenance sans perturber l’activité.",
+      "problems": [
+        "Réparations qui arrêtent l’exploitation",
+        "Travaux sans planification",
+        "Maintenance réactive"
+      ],
+      "solutions": [
+        "Construire et rénover des locaux",
+        "Entretenir les installations",
+        "Gérer les projets avec un seul responsable"
+      ]
+    }
+  },
+  {
+    "slug": "ph",
+    "href": "/quien-sirve/ph",
+    "order": 3,
+    "active": true,
+    "image": "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
+    "es": {
+      "title": "PH",
+      "blurb": "Administraciones y juntas de PH que necesitan mantenimiento, coordinación y criterio para proteger el valor del edificio.",
+      "problems": [
+        "Fallas en áreas comunes",
+        "Presupuesto y planificación complejos",
+        "Deterioro que reduce el valor"
+      ],
+      "solutions": [
+        "Mantener de forma preventiva",
+        "Renovar áreas comunes",
+        "Gestionar y controlar la obra"
+      ]
+    },
+    "en": {
+      "title": "PH",
+      "blurb": "PH administrations and boards that need maintenance, coordination and judgment to protect building value.",
+      "problems": [
+        "Failures in common areas",
+        "Complex budgets and planning",
+        "Deterioration that reduces value"
+      ],
+      "solutions": [
+        "Maintain preventively",
+        "Renovate common areas",
+        "Manage and control the works"
+      ]
+    },
+    "fr": {
+      "title": "PH",
+      "blurb": "Administrations et conseils de PH qui ont besoin de maintenance, de coordination et de jugement pour protéger la valeur de l’immeuble.",
+      "problems": [
+        "Pannes dans les parties communes",
+        "Budgets et planification complexes",
+        "Dégradation qui réduit la valeur"
+      ],
+      "solutions": [
+        "Entretenir de façon préventive",
+        "Rénover les parties communes",
+        "Gérer et contrôler les travaux"
+      ]
+    }
+  }
+]

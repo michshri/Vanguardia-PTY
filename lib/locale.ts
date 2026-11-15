@@ -1,4 +1,7 @@
-import { defaultLocale, locales, type Locale } from '@/lib/translations';
+import { defaultLocale, locales, type Locale } from '@/lib/locale-types';
+
+export type { Locale };
+export { defaultLocale, locales };
 
 export function resolveLocale(lang?: string | null): Locale {
   const value = (lang ?? '').toLowerCase();

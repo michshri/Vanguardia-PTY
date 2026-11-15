@@ -26,7 +26,7 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: 'linear-gradient(90deg, rgba(16,19,22,0.7), rgba(16,19,22,0.35)), url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1500&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${area.image})` }}>
         <div className="container">
           <p className="section-kicker">{extras.serviceDetail.kicker}</p>
           <h1>{area.title}</h1>

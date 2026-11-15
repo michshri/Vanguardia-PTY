@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { DocumentLang } from '@/components/document-lang';
+import { GoogleAnalytics } from '@/components/google-analytics';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body>
+        <GoogleAnalytics />
         <Suspense fallback={null}>
           <DocumentLang />
         </Suspense>

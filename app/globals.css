@@ -65,8 +65,8 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  min-height: 80px;
+  gap: 16px;
+  min-height: 72px;
 }
 
 .brand, .brand-mark {
@@ -74,11 +74,19 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  line-height: 0;
 }
 
 .brand-mark img {
-  width: clamp(140px, 15vw, 210px);
-  height: auto;
+  width: auto;
+  height: 44px;
+  max-width: 170px;
+  object-fit: contain;
+}
+
+.brand-footer .brand-mark img {
+  height: 42px;
+  max-width: 160px;
 }
 
 .language-switcher {
@@ -103,7 +111,10 @@ h1, h2, h3 {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.15rem;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
 }
 
 .nav-link {
@@ -144,6 +155,24 @@ h1, h2, h3 {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.header-actions {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.header-actions .btn {
+  min-height: 40px;
+  padding: 0 14px;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.header-actions .language-switcher {
+  flex-shrink: 0;
 }
 
 .menu-toggle {

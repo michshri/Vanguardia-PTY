@@ -83,7 +83,7 @@ function SiteHeaderInner() {
       <div className="container header-inner">
         <Link href={withLang('/', locale)} className="brand" aria-label="Vanguardia PTY home" onClick={closeMenu}>
           <span className="brand-mark" aria-hidden="true">
-            <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={220} height={60} priority />
+            <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={170} height={44} priority />
           </span>
         </Link>
 
@@ -163,7 +163,7 @@ export function SiteHeader() {
           <div className="container header-inner">
             <Link href="/" className="brand" aria-label="Vanguardia PTY home">
               <span className="brand-mark" aria-hidden="true">
-                <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={220} height={60} priority />
+                <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={170} height={44} priority />
               </span>
             </Link>
             <button type="button" className="menu-toggle" aria-label="Open menu" disabled>
@@ -194,7 +194,7 @@ function SiteFooterInner() {
         <div>
           <div className="brand brand-footer">
             <span className="brand-mark" aria-hidden="true">
-              <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={200} height={50} />
+              <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={160} height={42} />
             </span>
           </div>
           <p className="footer-copy">{extras.footer.copy}</p>

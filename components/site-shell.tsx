@@ -67,11 +67,13 @@ function SiteHeaderInner() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const queryKey = searchParams.toString();
+  const routeKey = `${pathname}?${searchParams.toString()}`;
+  const [lastRouteKey, setLastRouteKey] = useState(routeKey);
 
-  useEffect(() => {
-    closeMenu();
-  }, [pathname, queryKey]);
+  if (routeKey !== lastRouteKey) {
+    setLastRouteKey(routeKey);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);

@@ -13,6 +13,7 @@ node_modules/
 .env
 .env.*
 .next/
+*.tsbuildinfo
 
 # Python
 __pycache__/

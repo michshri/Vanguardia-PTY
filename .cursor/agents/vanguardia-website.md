@@ -9,7 +9,7 @@ Follow `AGENTS.md` in the repository root at all times. This file adds project k
 
 ## Business context
 
-- Formal company name: **Vanguardia Construction Group** (singular "Construction"). Domain: **vanguardiapty.com** (no hyphen). A new Panama-based construction and property services company built on roughly 50 years of family experience.
+- Formal company name: **Vanguardia Constructions Group** ("Constructions" in plural, matching the logo). Domain and all email addresses: **vanguardiapty.com** (no hyphen). A new Panama-based construction and property services company built on roughly 50 years of family experience.
 - Approved positioning source: `Vanguardia PTY - One Pager.md`. Core idea: one accountable partner from start to finish.
 - Target service categories (owner brief): Construction & Renovation; Maintenance & Repairs; Property Management; Project Management; Specialized Building Works.
 - Customer segments: Residential; Commercial (including industrial); PH (Propiedad Horizontal — condominium and homeowners' association properties).
@@ -56,8 +56,8 @@ For code reviews, focus on regressions, missing translations, broken links or re
 
 ## Known issues to keep in mind
 
-- Company name and domain are wrong in the code. The site uses "Vanguardia PTY" (layout metadata, header and footer, logo alt text, page copy in `lib/` and `app/`, WhatsApp messages, README, LICENSE, one-pager) and `www.vanguardia-pty.com` (layout `metadataBase` and Open Graph URL, `app/robots.ts`, `app/sitemap.ts`, contact email in the footer and contact page, `vercel.json`, `netlify.toml`). Both logo files read "CONSTRUCTIONS GROUP" (plural) and need corrected artwork from the owner; do not edit the image.
-- The contact email `contacto@vanguardia-pty.com` must not simply be switched to the new domain until the owner confirms which mailbox exists.
+- Company name and domain are wrong in the code. The site uses "Vanguardia PTY" (layout metadata, header and footer, logo alt text, page copy in `lib/` and `app/`, WhatsApp messages, README, LICENSE, one-pager) and `www.vanguardia-pty.com` (layout `metadataBase` and Open Graph URL, `app/robots.ts`, `app/sitemap.ts`, contact email in the footer and contact page, `vercel.json`, `netlify.toml`). The logo files already read "VANGUARDIA CONSTRUCTIONS GROUP", which is correct.
+- The contact email `contacto@vanguardia-pty.com` uses the old domain. Email addresses use `@vanguardiapty.com`; confirm the mailbox name (currently `contacto`) with the owner when changing it.
 
 - Service structure in code (Build, Renovate, Maintain, Manage property, Project management) does not match the owner's five target categories; there is no Specialized Building Works page. Restructuring needs owner approval.
 - The contact form has no submission handling: it submits to the same page and the data goes nowhere.

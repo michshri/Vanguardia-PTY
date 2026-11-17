@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { resolveLocale, withLang } from '@/lib/locale';
-import { getCustomerSegment, getHomeExtras, segmentSlugs } from '@/lib/localized-content';
+import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
+import {
+  getCustomerSegment,
+  getHomeExtras,
+  getServiceArea,
+  segmentSlugs,
+} from '@/lib/localized-content';
 
 export function generateStaticParams() {
   return segmentSlugs.map((segment) => ({ segment }));
@@ -24,9 +29,18 @@ export default async function SegmentDetailPage({
     notFound();
   }
 
+  const relatedServices = segment.services
+    .map((serviceSlug) => getServiceArea(locale, serviceSlug))
+    .filter((service): service is NonNullable<typeof service> => Boolean(service));
+
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${segment.image})` }}>
+      <section
+        className="page-header"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${segment.image})`,
+        }}
+      >
         <div className="container">
           <p className="section-kicker">{extras.segmentDetail.kicker}</p>
           <h1>{segment.title}</h1>
@@ -50,13 +64,29 @@ export default async function SegmentDetailPage({
                 <li key={item}>{item}</li>
               ))}
             </ul>
+
+            {relatedServices.length > 0 ? (
+              <>
+                <h2>{extras.segmentDetail.relatedServices}</h2>
+                <ul className="related-links">
+                  {relatedServices.map((service) => (
+                    <li key={service.slug}>
+                      <Link href={withLang(service.href, locale)}>
+                        {service.title}
+                        <span aria-hidden="true"> →</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
           </article>
 
           <aside className="info-panel">
             <h3>{extras.segmentDetail.focus}</h3>
             <p>{extras.segmentDetail.focusCopy}</p>
             <div style={{ marginTop: 24 }}>
-              <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
+              <Link className="btn btn-primary" href={withContactIntent(locale, { segment: segment.slug })}>
                 {extras.segmentDetail.talk}
               </Link>
             </div>

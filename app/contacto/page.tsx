@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { resolveLocale } from '@/lib/locale';
-import { getHomeExtras } from '@/lib/localized-content';
+import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
 
 export const metadata = {
   title: 'Contacto',
@@ -58,11 +58,24 @@ const copy = {
   },
 } as const;
 
-export default async function ContactPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string; service?: string; segment?: string }> | { lang?: string; service?: string; segment?: string };
+}) {
   const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
   const form = getHomeExtras(locale).contactForm;
+  const services = getServiceAreas(locale);
+  const segments = getCustomerSegments(locale);
+  const otherOption = form.clientOptions[form.clientOptions.length - 1] ?? 'Otro';
+  const selectedService = services.some((service) => service.slug === resolvedParams?.service)
+    ? resolvedParams?.service
+    : undefined;
+  const selectedSegment = segments.some((segment) => segment.slug === resolvedParams?.segment)
+    ? resolvedParams?.segment
+    : undefined;
 
   return (
     <>
@@ -97,17 +110,22 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
               </label>
               <label className="field">
                 {text.clientType}
-                <select name="segment">
-                  {form.clientOptions.map((option) => (
-                    <option key={option}>{option}</option>
+                <select name="segment" defaultValue={selectedSegment ?? ''}>
+                  {segments.map((segment) => (
+                    <option key={segment.slug} value={segment.slug}>
+                      {segment.title}
+                    </option>
                   ))}
+                  <option value="other">{otherOption}</option>
                 </select>
               </label>
               <label className="field">
                 {text.requiredService}
-                <select name="service">
-                  {form.serviceOptions.map((option) => (
-                    <option key={option}>{option}</option>
+                <select name="service" defaultValue={selectedService ?? ''}>
+                  {services.map((service) => (
+                    <option key={service.slug} value={service.slug}>
+                      {service.title}
+                    </option>
                   ))}
                 </select>
               </label>

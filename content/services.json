@@ -1,367 +1,177 @@
 [
   {
-    "slug": "construccion",
-    "href": "/servicios/construccion",
+    "slug": "construccion-renovacion",
+    "href": "/servicios/construccion-renovacion",
     "order": 1,
     "active": true,
     "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    "segments": ["residencial", "comercial", "ph"],
     "es": {
-      "title": "Construir",
-      "shortTitle": "Construir",
-      "summary": "Obras nuevas y ampliaciones con planificación clara, supervisión directa y ejecución responsable.",
-      "description": "Cuando el proyecto es una obra nueva o una ampliación, Vanguardia toma responsabilidad sobre el plan, la coordinación y la ejecución para entregar un resultado claro y controlado.",
-      "whoFor": [
-        "Propietarios residenciales",
-        "Clientes comerciales",
-        "Administraciones de PH"
-      ],
-      "problems": [
-        "Alcance poco definido",
-        "Coordinación entre gremios",
-        "Retrasos y falta de un responsable claro"
-      ],
-      "bullets": [
-        "Obras nuevas",
-        "Ampliaciones",
-        "Mejoras estructurales",
-        "Coordinación de obra"
-      ]
+      "title": "Construcción y renovación",
+      "shortTitle": "Construcción y renovación",
+      "summary": "Obras nuevas, ampliaciones, remodelaciones y renovaciones con planificación clara, supervisión directa y ejecución responsable.",
+      "description": "Cuando el proyecto es una obra nueva, una ampliación o una renovación, Vanguardia toma responsabilidad sobre el plan, la coordinación y la ejecución. El trabajo se define según el uso real del inmueble y se entrega con un alcance claro y controlado.",
+      "whoFor": ["Propietarios residenciales", "Clientes comerciales e industriales", "Administraciones de PH"],
+      "problems": ["Alcance poco definido", "Coordinación entre gremios", "Remodelaciones sin plan", "Retrasos y falta de un responsable claro"],
+      "bullets": ["Obras nuevas y ampliaciones", "Remodelaciones y renovación de interiores", "Mejoras estructurales", "Actualización de acabados", "Coordinación de obra"]
     },
     "en": {
-      "title": "Build",
-      "shortTitle": "Build",
-      "summary": "New construction and extensions with clear planning, direct supervision and accountable execution.",
-      "description": "When the project is new construction or an extension, Vanguardia takes responsibility for the plan, coordination and execution — so the result stays clear and controlled.",
-      "whoFor": [
-        "Residential owners",
-        "Commercial clients",
-        "PH administrations"
-      ],
-      "problems": [
-        "Undefined scope",
-        "Coordination across trades",
-        "Delays and no clear owner"
-      ],
-      "bullets": [
-        "New construction",
-        "Extensions",
-        "Structural upgrades",
-        "Site coordination"
-      ]
+      "title": "Construction & Renovation",
+      "shortTitle": "Construction & Renovation",
+      "summary": "New construction, extensions, remodeling and renovation with clear planning, direct supervision and accountable execution.",
+      "description": "When the project is new construction, an extension or a renovation, Vanguardia takes responsibility for the plan, coordination and execution. The work is shaped by how the property is used, and delivered with a clear, controlled scope.",
+      "whoFor": ["Residential owners", "Commercial and industrial clients", "PH administrations"],
+      "problems": ["Undefined scope", "Coordination across trades", "Remodels without a plan", "Delays and no clear owner"],
+      "bullets": ["New construction and extensions", "Remodeling and interior renovation", "Structural upgrades", "Finish upgrades", "Site coordination"]
     },
     "fr": {
-      "title": "Construire",
-      "shortTitle": "Construire",
-      "summary": "Constructions neuves et extensions avec une planification claire, une supervision directe et une exécution responsable.",
-      "description": "Lorsque le projet est une construction neuve ou une extension, Vanguardia prend la responsabilité du plan, de la coordination et de l’exécution pour un résultat clair et maîtrisé.",
-      "whoFor": [
-        "Propriétaires résidentiels",
-        "Clients commerciaux",
-        "Administrations de PH"
-      ],
-      "problems": [
-        "Périmètre mal défini",
-        "Coordination entre corps de métier",
-        "Retards et absence de responsable clair"
-      ],
-      "bullets": [
-        "Constructions neuves",
-        "Extensions",
-        "Améliorations structurelles",
-        "Coordination de chantier"
-      ]
+      "title": "Construction et rénovation",
+      "shortTitle": "Construction et rénovation",
+      "summary": "Constructions neuves, extensions, remodelages et rénovations avec une planification claire, une supervision directe et une exécution responsable.",
+      "description": "Lorsque le projet est une construction neuve, une extension ou une rénovation, Vanguardia prend la responsabilité du plan, de la coordination et de l’exécution. Les travaux sont pensés selon l’usage réel du bien, avec un périmètre clair et maîtrisé.",
+      "whoFor": ["Propriétaires résidentiels", "Clients commerciaux et industriels", "Administrations de PH"],
+      "problems": ["Périmètre mal défini", "Coordination entre corps de métier", "Remodelages sans plan", "Retards et absence de responsable clair"],
+      "bullets": ["Constructions neuves et extensions", "Remodelages et rénovation intérieure", "Améliorations structurelles", "Mise à jour des finitions", "Coordination de chantier"]
     }
   },
   {
-    "slug": "renovacion",
-    "href": "/servicios/renovacion",
+    "slug": "mantenimiento-reparaciones",
+    "href": "/servicios/mantenimiento-reparaciones",
     "order": 2,
     "active": true,
-    "image": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-    "es": {
-      "title": "Renovar",
-      "shortTitle": "Renovar",
-      "summary": "Remodelaciones y renovaciones pensadas para el uso real del inmueble y para aumentar su valor.",
-      "description": "Renovamos espacios y edificios con criterio práctico: entender el uso, definir el alcance y ejecutar con materiales y métodos modernos.",
-      "whoFor": [
-        "Viviendas",
-        "Locales comerciales",
-        "Áreas comunes de PH"
-      ],
-      "problems": [
-        "Remodelaciones sin plan",
-        "Interrupciones innecesarias",
-        "Acabados que no duran"
-      ],
-      "bullets": [
-        "Remodelaciones",
-        "Renovación de interiores",
-        "Actualización de acabados",
-        "Mejoras de espacios"
-      ]
-    },
-    "en": {
-      "title": "Renovate",
-      "shortTitle": "Renovate",
-      "summary": "Remodeling and renovation shaped by how the property is used — and by increasing its value.",
-      "description": "We renovate spaces and buildings with a practical approach: understand the use, define the scope, and execute with modern methods and materials.",
-      "whoFor": [
-        "Homes",
-        "Commercial spaces",
-        "PH common areas"
-      ],
-      "problems": [
-        "Remodels without a plan",
-        "Unnecessary disruption",
-        "Finishes that do not last"
-      ],
-      "bullets": [
-        "Remodeling",
-        "Interior renovation",
-        "Finish upgrades",
-        "Space improvements"
-      ]
-    },
-    "fr": {
-      "title": "Rénover",
-      "shortTitle": "Rénover",
-      "summary": "Remodelages et rénovations pensés selon l’usage réel du bien — et pour en augmenter la valeur.",
-      "description": "Nous rénovons espaces et bâtiments avec une approche pratique : comprendre l’usage, définir le périmètre et exécuter avec des méthodes et matériaux modernes.",
-      "whoFor": [
-        "Logements",
-        "Locaux commerciaux",
-        "Parties communes de PH"
-      ],
-      "problems": [
-        "Remodelages sans plan",
-        "Perturbations inutiles",
-        "Finitions peu durables"
-      ],
-      "bullets": [
-        "Remodelages",
-        "Rénovation intérieure",
-        "Mise à jour des finitions",
-        "Amélioration des espaces"
-      ]
-    }
-  },
-  {
-    "slug": "mantenimiento",
-    "href": "/servicios/mantenimiento",
-    "order": 3,
-    "active": true,
     "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
+    "segments": ["residencial", "comercial", "ph"],
     "es": {
-      "title": "Mantener",
-      "shortTitle": "Mantener",
-      "summary": "Mantenimiento preventivo y correctivo para proteger el inmueble, evitar daños mayores y conservar su valor.",
-      "description": "El mantenimiento profesional evita sorpresas costosas. Diseñamos intervenciones sencillas y eficaces para mantener las propiedades operando, seguras y en buen estado.",
-      "whoFor": [
-        "Residencias",
-        "PH",
-        "Propiedades comerciales"
-      ],
-      "problems": [
-        "Mantenimiento reactivo",
-        "Fugas y daños ocultos",
-        "Pérdida de valor por deterioro"
-      ],
-      "bullets": [
-        "Mantenimiento preventivo",
-        "Reparaciones",
-        "Pintura y acabados",
-        "Impermeabilización"
-      ]
+      "title": "Mantenimiento y reparaciones",
+      "shortTitle": "Mantenimiento y reparaciones",
+      "summary": "Mantenimiento preventivo y correctivo, reparaciones y trabajos cotidianos para proteger el inmueble y conservar su valor.",
+      "description": "El mantenimiento profesional evita sorpresas costosas. Diseñamos intervenciones sencillas y eficaces — preventivas o correctivas — para mantener las propiedades operando, seguras y en buen estado.",
+      "whoFor": ["Residencias", "Propiedades comerciales e industriales", "PH"],
+      "problems": ["Mantenimiento reactivo", "Fugas y daños ocultos", "Pérdida de valor por deterioro"],
+      "bullets": ["Mantenimiento preventivo", "Reparaciones", "Pintura y acabados", "Impermeabilización", "Sistemas del edificio"]
     },
     "en": {
-      "title": "Maintain",
-      "shortTitle": "Maintain",
-      "summary": "Preventive and corrective maintenance to protect the property, avoid larger damage and preserve value.",
-      "description": "Professional maintenance prevents costly surprises. We design simple, effective interventions to keep properties operating, safe and in good condition.",
-      "whoFor": [
-        "Residences",
-        "PH communities",
-        "Commercial properties"
-      ],
-      "problems": [
-        "Reactive maintenance",
-        "Leaks and hidden damage",
-        "Value loss from deterioration"
-      ],
-      "bullets": [
-        "Preventive maintenance",
-        "Repairs",
-        "Painting and finishes",
-        "Waterproofing"
-      ]
+      "title": "Maintenance & Repairs",
+      "shortTitle": "Maintenance & Repairs",
+      "summary": "Preventive and corrective maintenance, repairs and day-to-day work to protect the property and preserve its value.",
+      "description": "Professional maintenance prevents costly surprises. We design simple, effective interventions — preventive or corrective — to keep properties operating, safe and in good condition.",
+      "whoFor": ["Residences", "Commercial and industrial properties", "PH communities"],
+      "problems": ["Reactive maintenance", "Leaks and hidden damage", "Value loss from deterioration"],
+      "bullets": ["Preventive maintenance", "Repairs", "Painting and finishes", "Waterproofing", "Building systems"]
     },
     "fr": {
-      "title": "Entretenir",
-      "shortTitle": "Entretenir",
-      "summary": "Maintenance préventive et corrective pour protéger le bien, éviter de plus gros dommages et préserver sa valeur.",
-      "description": "Une maintenance professionnelle évite les mauvaises surprises. Nous concevons des interventions simples et efficaces pour garder les biens opérationnels, sûrs et en bon état.",
-      "whoFor": [
-        "Résidences",
-        "PH",
-        "Biens commerciaux"
-      ],
-      "problems": [
-        "Maintenance réactive",
-        "Fuites et dommages cachés",
-        "Perte de valeur par dégradation"
-      ],
-      "bullets": [
-        "Maintenance préventive",
-        "Réparations",
-        "Peinture et finitions",
-        "Étanchéité"
-      ]
+      "title": "Maintenance et réparations",
+      "shortTitle": "Maintenance et réparations",
+      "summary": "Maintenance préventive et corrective, réparations et travaux courants pour protéger le bien et préserver sa valeur.",
+      "description": "Une maintenance professionnelle évite les mauvaises surprises. Nous concevons des interventions simples et efficaces — préventives ou correctives — pour garder les biens opérationnels, sûrs et en bon état.",
+      "whoFor": ["Résidences", "Biens commerciaux et industriels", "PH"],
+      "problems": ["Maintenance réactive", "Fuites et dommages cachés", "Perte de valeur par dégradation"],
+      "bullets": ["Maintenance préventive", "Réparations", "Peinture et finitions", "Étanchéité", "Systèmes du bâtiment"]
     }
   },
   {
     "slug": "gestion-propiedad",
     "href": "/servicios/gestion-propiedad",
-    "order": 4,
+    "order": 3,
     "active": true,
     "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+    "segments": ["residencial", "comercial", "ph"],
     "es": {
-      "title": "Gestionar",
-      "shortTitle": "Gestionar",
-      "summary": "Gestión de propiedad con criterio constructivo: planificar, coordinar y proteger el activo a largo plazo.",
+      "title": "Gestión de propiedad",
+      "shortTitle": "Gestión de propiedad",
+      "summary": "Gestión práctica de inmuebles con criterio constructivo: planificar, coordinar y proteger el activo a largo plazo.",
       "description": "Combinamos conocimiento de construcción con criterio de propiedad para ordenar el mantenimiento, priorizar inversiones y tomar decisiones con claridad.",
-      "whoFor": [
-        "Propietarios",
-        "PH y administraciones",
-        "Inversionistas"
-      ],
-      "problems": [
-        "Falta de planificación",
-        "Costos impredecibles",
-        "Trabajos dispersos sin seguimiento"
-      ],
-      "bullets": [
-        "Inspección de activos",
-        "Programación de mantenimiento",
-        "Coordinación de trabajos",
-        "Asesoría técnica"
-      ]
+      "whoFor": ["Propietarios", "PH y administraciones", "Inversionistas"],
+      "problems": ["Falta de planificación", "Costos impredecibles", "Trabajos dispersos sin seguimiento"],
+      "bullets": ["Inspección de activos", "Programación de mantenimiento", "Coordinación de trabajos", "Asesoría técnica"]
     },
     "en": {
-      "title": "Manage",
-      "shortTitle": "Manage",
-      "summary": "Property management with a construction mindset: plan, coordinate and protect the asset over time.",
+      "title": "Property Management",
+      "shortTitle": "Property Management",
+      "summary": "Hands-on property management with a construction mindset: plan, coordinate and protect the asset over time.",
       "description": "We combine construction knowledge with property judgment to organize maintenance, prioritize investment and make decisions with clarity.",
-      "whoFor": [
-        "Owners",
-        "PH administrations",
-        "Investors"
-      ],
-      "problems": [
-        "No clear plan",
-        "Unpredictable costs",
-        "Scattered work without follow-through"
-      ],
-      "bullets": [
-        "Asset inspection",
-        "Maintenance scheduling",
-        "Work coordination",
-        "Technical advice"
-      ]
+      "whoFor": ["Owners", "PH administrations", "Investors"],
+      "problems": ["No clear plan", "Unpredictable costs", "Scattered work without follow-through"],
+      "bullets": ["Asset inspection", "Maintenance scheduling", "Work coordination", "Technical advice"]
     },
     "fr": {
-      "title": "Gérer",
-      "shortTitle": "Gérer",
-      "summary": "Gestion immobilière avec un regard constructif : planifier, coordonner et protéger l’actif dans la durée.",
+      "title": "Gestion de propriété",
+      "shortTitle": "Gestion de propriété",
+      "summary": "Gestion concrète des biens avec un regard constructif : planifier, coordonner et protéger l’actif dans la durée.",
       "description": "Nous combinons savoir-faire constructif et jugement immobilier pour organiser la maintenance, prioriser les investissements et décider avec clarté.",
-      "whoFor": [
-        "Propriétaires",
-        "Administrations de PH",
-        "Investisseurs"
-      ],
-      "problems": [
-        "Absence de plan",
-        "Coûts imprévisibles",
-        "Travaux dispersés sans suivi"
-      ],
-      "bullets": [
-        "Inspection des actifs",
-        "Programmation de la maintenance",
-        "Coordination des travaux",
-        "Conseil technique"
-      ]
+      "whoFor": ["Propriétaires", "Administrations de PH", "Investisseurs"],
+      "problems": ["Absence de plan", "Coûts imprévisibles", "Travaux dispersés sans suivi"],
+      "bullets": ["Inspection des actifs", "Programmation de la maintenance", "Coordination des travaux", "Conseil technique"]
     }
   },
   {
     "slug": "gestion-proyectos",
     "href": "/servicios/gestion-proyectos",
-    "order": 5,
+    "order": 4,
     "active": true,
     "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    "segments": ["residencial", "comercial", "ph"],
     "es": {
       "title": "Gestión de proyectos",
       "shortTitle": "Gestión de proyectos",
       "summary": "Un solo responsable para planificar, coordinar y supervisar el proyecto de principio a fin.",
       "description": "Vanguardia toma responsabilidad sobre el plan, la comunicación y el control de ejecución para que el cliente no tenga que coordinar cada detalle.",
-      "whoFor": [
-        "Clientes con múltiples proveedores",
-        "PH",
-        "Proyectos comerciales"
-      ],
-      "problems": [
-        "Desfase entre contratistas",
-        "Falta de dirección general",
-        "Tiempos y presupuestos fuera de control"
-      ],
-      "bullets": [
-        "Planificación",
-        "Supervisión",
-        "Coordinación",
-        "Control de avances"
-      ]
+      "whoFor": ["Clientes con múltiples proveedores", "PH", "Proyectos comerciales e industriales"],
+      "problems": ["Desfase entre contratistas", "Falta de dirección general", "Tiempos y presupuestos fuera de control"],
+      "bullets": ["Planificación", "Supervisión", "Coordinación", "Control de avances", "Presupuesto y compras"]
     },
     "en": {
-      "title": "Project management",
-      "shortTitle": "Project management",
+      "title": "Project Management",
+      "shortTitle": "Project Management",
       "summary": "One accountable partner to plan, coordinate and supervise the project from start to finish.",
       "description": "Vanguardia takes responsibility for the plan, communication and execution control so the client does not have to manage every detail.",
-      "whoFor": [
-        "Clients with multiple vendors",
-        "PH communities",
-        "Commercial projects"
-      ],
-      "problems": [
-        "Misalignment between contractors",
-        "No overall direction",
-        "Time and budget out of control"
-      ],
-      "bullets": [
-        "Planning",
-        "Supervision",
-        "Coordination",
-        "Progress control"
-      ]
+      "whoFor": ["Clients with multiple vendors", "PH communities", "Commercial and industrial projects"],
+      "problems": ["Misalignment between contractors", "No overall direction", "Time and budget out of control"],
+      "bullets": ["Planning", "Supervision", "Coordination", "Progress control", "Budgeting and procurement"]
     },
     "fr": {
       "title": "Gestion de projets",
       "shortTitle": "Gestion de projets",
       "summary": "Un seul responsable pour planifier, coordonner et superviser le projet du début à la fin.",
       "description": "Vanguardia prend la responsabilité du plan, de la communication et du contrôle d’exécution pour que le client n’ait pas à gérer chaque détail.",
-      "whoFor": [
-        "Clients avec plusieurs prestataires",
-        "PH",
-        "Projets commerciaux"
-      ],
-      "problems": [
-        "Décalage entre entrepreneurs",
-        "Absence de direction générale",
-        "Délais et budgets hors contrôle"
-      ],
-      "bullets": [
-        "Planification",
-        "Supervision",
-        "Coordination",
-        "Contrôle de l’avancement"
-      ]
+      "whoFor": ["Clients avec plusieurs prestataires", "PH", "Projets commerciaux et industriels"],
+      "problems": ["Décalage entre entrepreneurs", "Absence de direction générale", "Délais et budgets hors contrôle"],
+      "bullets": ["Planification", "Supervision", "Coordination", "Contrôle de l’avancement", "Budget et approvisionnement"]
+    }
+  },
+  {
+    "slug": "obras-especializadas",
+    "href": "/servicios/obras-especializadas",
+    "order": 5,
+    "active": true,
+    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+    "segments": ["residencial", "comercial", "ph"],
+    "es": {
+      "title": "Obras especializadas",
+      "shortTitle": "Obras especializadas",
+      "summary": "Trabajos técnicos donde la preparación y la ejecución importan: envolvente, revestimientos, impermeabilización, obra estructural y sistemas especializados.",
+      "description": "Hay intervenciones que no se resuelven con un trabajo genérico. Vanguardia aporta experiencia en obras especializadas — incluidas envolventes, revestimientos, impermeabilización, trabajos estructurales y sistemas como techos verdes — con preparación adecuada y ejecución cuidadosa.",
+      "whoFor": ["Propietarios residenciales", "Clientes comerciales e industriales", "Administraciones de PH"],
+      "problems": ["Trabajos técnicos mal especificados", "Daños por humedad o deterioro de la envolvente", "Falta de experiencia en sistemas especializados"],
+      "bullets": ["Envolvente del edificio", "Revestimientos y coatings", "Impermeabilización", "Trabajos estructurales", "Techos verdes y sistemas especializados"]
+    },
+    "en": {
+      "title": "Specialized Building Works",
+      "shortTitle": "Specialized Building Works",
+      "summary": "Technical work where preparation and execution matter: building envelopes, coatings, waterproofing, structural works and specialist systems.",
+      "description": "Some interventions cannot be handled as generic trade work. Vanguardia brings experience in specialized building works — including envelopes, coatings, waterproofing, structural works and systems such as green roofs — with proper preparation and careful execution.",
+      "whoFor": ["Residential owners", "Commercial and industrial clients", "PH administrations"],
+      "problems": ["Technical work poorly specified", "Damage from moisture or envelope deterioration", "Lack of experience with specialist systems"],
+      "bullets": ["Building envelopes", "Coatings", "Waterproofing", "Structural works", "Green roofs and specialist systems"]
+    },
+    "fr": {
+      "title": "Travaux spécialisés",
+      "shortTitle": "Travaux spécialisés",
+      "summary": "Travaux techniques où la préparation et l’exécution comptent : enveloppe, revêtements, étanchéité, ouvrages structurels et systèmes spécialisés.",
+      "description": "Certaines interventions ne se traitent pas comme un corps de métier générique. Vanguardia apporte une expérience des travaux spécialisés — enveloppes, revêtements, étanchéité, ouvrages structurels et systèmes tels que les toitures végétalisées — avec une préparation adaptée et une exécution soignée.",
+      "whoFor": ["Propriétaires résidentiels", "Clients commerciaux et industriels", "Administrations de PH"],
+      "problems": ["Travaux techniques mal spécifiés", "Dommages liés à l’humidité ou à la dégradation de l’enveloppe", "Manque d’expérience sur les systèmes spécialisés"],
+      "bullets": ["Enveloppe du bâtiment", "Revêtements et coatings", "Étanchéité", "Ouvrages structurels", "Toitures végétalisées et systèmes spécialisés"]
     }
   }
 ]

@@ -5,6 +5,13 @@
     "order": 1,
     "active": true,
     "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80",
+    "services": [
+      "construccion-renovacion",
+      "mantenimiento-reparaciones",
+      "gestion-propiedad",
+      "gestion-proyectos",
+      "obras-especializadas"
+    ],
     "es": {
       "title": "Residencial",
       "blurb": "Propietarios y familias que necesitan construir, renovar, mantener o gestionar su vivienda con claridad y un solo responsable.",
@@ -14,9 +21,10 @@
         "Interrupciones en la vida diaria"
       ],
       "solutions": [
-        "Construir y renovar",
-        "Mantener preventivamente",
-        "Gestionar y coordinar proveedores"
+        "Construcción y renovación",
+        "Mantenimiento y reparaciones",
+        "Gestión de propiedad y de proyectos",
+        "Obras especializadas cuando el inmueble lo requiere"
       ]
     },
     "en": {
@@ -28,9 +36,10 @@
         "Disruption to daily life"
       ],
       "solutions": [
-        "Build and renovate",
-        "Maintain preventively",
-        "Manage and coordinate vendors"
+        "Construction and renovation",
+        "Maintenance and repairs",
+        "Property and project management",
+        "Specialized building works when the property requires them"
       ]
     },
     "fr": {
@@ -42,9 +51,10 @@
         "Perturbations du quotidien"
       ],
       "solutions": [
-        "Construire et rénover",
-        "Entretenir de façon préventive",
-        "Gérer et coordonner les prestataires"
+        "Construction et rénovation",
+        "Maintenance et réparations",
+        "Gestion de propriété et de projets",
+        "Travaux spécialisés lorsque le bien le demande"
       ]
     }
   },
@@ -54,46 +64,56 @@
     "order": 2,
     "active": true,
     "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    "services": [
+      "construccion-renovacion",
+      "mantenimiento-reparaciones",
+      "gestion-propiedad",
+      "gestion-proyectos",
+      "obras-especializadas"
+    ],
     "es": {
-      "title": "Comercial",
-      "blurb": "Empresas y administradores de inmuebles comerciales que necesitan obras y mantenimiento sin afectar la operación.",
+      "title": "Comercial e industrial",
+      "blurb": "Empresas y administradores de inmuebles comerciales e industriales que necesitan obras y mantenimiento sin afectar la operación.",
       "problems": [
         "Reparaciones que detienen la operación",
         "Obras sin planificación",
         "Mantenimiento reactivo"
       ],
       "solutions": [
-        "Construir y renovar locales",
-        "Mantener instalaciones",
-        "Gestionar proyectos con un solo responsable"
+        "Construcción y renovación de locales e instalaciones",
+        "Mantenimiento y reparaciones",
+        "Gestión de proyectos con un solo responsable",
+        "Obras especializadas para entornos exigentes"
       ]
     },
     "en": {
-      "title": "Commercial",
-      "blurb": "Businesses and commercial property managers who need works and maintenance without disrupting operations.",
+      "title": "Commercial & industrial",
+      "blurb": "Businesses and managers of commercial and industrial properties who need works and maintenance without disrupting operations.",
       "problems": [
         "Repairs that stop operations",
         "Works without planning",
         "Reactive maintenance"
       ],
       "solutions": [
-        "Build and renovate premises",
-        "Maintain facilities",
-        "Manage projects with one accountable partner"
+        "Construction and renovation of premises and facilities",
+        "Maintenance and repairs",
+        "Project management with one accountable partner",
+        "Specialized building works for demanding environments"
       ]
     },
     "fr": {
-      "title": "Commercial",
-      "blurb": "Entreprises et gestionnaires de biens commerciaux qui ont besoin de travaux et de maintenance sans perturber l’activité.",
+      "title": "Commercial et industriel",
+      "blurb": "Entreprises et gestionnaires de biens commerciaux et industriels qui ont besoin de travaux et de maintenance sans perturber l’activité.",
       "problems": [
         "Réparations qui arrêtent l’exploitation",
         "Travaux sans planification",
         "Maintenance réactive"
       ],
       "solutions": [
-        "Construire et rénover des locaux",
-        "Entretenir les installations",
-        "Gérer les projets avec un seul responsable"
+        "Construction et rénovation de locaux et installations",
+        "Maintenance et réparations",
+        "Gestion de projets avec un seul responsable",
+        "Travaux spécialisés pour des environnements exigeants"
       ]
     }
   },
@@ -103,6 +123,13 @@
     "order": 3,
     "active": true,
     "image": "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
+    "services": [
+      "construccion-renovacion",
+      "mantenimiento-reparaciones",
+      "gestion-propiedad",
+      "gestion-proyectos",
+      "obras-especializadas"
+    ],
     "es": {
       "title": "PH",
       "blurb": "Administraciones y juntas de PH que necesitan mantenimiento, coordinación y criterio para proteger el valor del edificio.",
@@ -112,9 +139,10 @@
         "Deterioro que reduce el valor"
       ],
       "solutions": [
-        "Mantener de forma preventiva",
-        "Renovar áreas comunes",
-        "Gestionar y controlar la obra"
+        "Mantenimiento y reparaciones preventivos",
+        "Construcción y renovación de áreas comunes",
+        "Gestión de propiedad y de proyectos",
+        "Obras especializadas en la envolvente y sistemas del edificio"
       ]
     },
     "en": {
@@ -126,9 +154,10 @@
         "Deterioration that reduces value"
       ],
       "solutions": [
-        "Maintain preventively",
-        "Renovate common areas",
-        "Manage and control the works"
+        "Preventive maintenance and repairs",
+        "Construction and renovation of common areas",
+        "Property and project management",
+        "Specialized works on the envelope and building systems"
       ]
     },
     "fr": {
@@ -140,9 +169,10 @@
         "Dégradation qui réduit la valeur"
       ],
       "solutions": [
-        "Entretenir de façon préventive",
-        "Rénover les parties communes",
-        "Gérer et contrôler les travaux"
+        "Maintenance et réparations préventives",
+        "Construction et rénovation des parties communes",
+        "Gestion de propriété et de projets",
+        "Travaux spécialisés sur l’enveloppe et les systèmes de l’immeuble"
       ]
     }
   }

@@ -54,12 +54,22 @@ function SiteHeaderInner() {
   const searchParams = useSearchParams();
   const locale = resolveLocale(searchParams.get('lang'));
   const dict = getDictionary(locale);
+  const services = getServiceAreas(locale);
+  const segments = getCustomerSegments(locale);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
     { href: '/', label: dict.nav.home },
-    { href: '/servicios', label: dict.nav.services },
-    { href: '/quien-sirve', label: dict.nav.segments },
+    {
+      href: '/servicios',
+      label: dict.nav.services,
+      children: services.map((service) => ({ href: service.href, label: service.title })),
+    },
+    {
+      href: '/quien-sirve',
+      label: dict.nav.segments,
+      children: segments.map((segment) => ({ href: segment.href, label: segment.title })),
+    },
     { href: '/proyectos', label: dict.nav.projects },
     { href: '/nosotros', label: dict.nav.about },
     { href: '/contacto', label: dict.nav.contact },
@@ -90,11 +100,26 @@ function SiteHeaderInner() {
         </Link>
 
         <nav className="main-nav" aria-label="Main navigation">
-          {navItems.map((item) => (
-            <Link key={item.href} href={withLang(item.href, locale)} className="nav-link">
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.children ? (
+              <div key={item.href} className="nav-item has-dropdown">
+                <Link href={withLang(item.href, locale)} className="nav-link">
+                  {item.label}
+                </Link>
+                <div className="nav-dropdown" role="group" aria-label={item.label}>
+                  {item.children.map((child) => (
+                    <Link key={child.href} href={withLang(child.href, locale)} className="nav-dropdown-link">
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link key={item.href} href={withLang(item.href, locale)} className="nav-link">
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="header-actions desktop-actions">
@@ -130,9 +155,25 @@ function SiteHeaderInner() {
         <div className="container mobile-nav-inner">
           <nav className="mobile-nav-links" aria-label="Mobile navigation">
             {navItems.map((item) => (
-              <Link key={item.href} href={withLang(item.href, locale)} className="mobile-nav-link" onClick={closeMenu}>
-                {item.label}
-              </Link>
+              <div key={item.href} className={item.children ? 'mobile-nav-group' : undefined}>
+                <Link href={withLang(item.href, locale)} className="mobile-nav-link" onClick={closeMenu}>
+                  {item.label}
+                </Link>
+                {item.children ? (
+                  <div className="mobile-nav-sublinks">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={withLang(child.href, locale)}
+                        className="mobile-nav-sublink"
+                        onClick={closeMenu}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             ))}
           </nav>
 

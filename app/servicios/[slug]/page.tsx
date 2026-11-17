@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { resolveLocale, withLang } from '@/lib/locale';
-import { getHomeExtras, getServiceArea, serviceSlugs } from '@/lib/localized-content';
+import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
+import {
+  getCustomerSegment,
+  getHomeExtras,
+  getServiceArea,
+  serviceSlugs,
+} from '@/lib/localized-content';
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
@@ -24,9 +29,18 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
+  const relatedSegments = area.segments
+    .map((segmentSlug) => getCustomerSegment(locale, segmentSlug))
+    .filter((segment): segment is NonNullable<typeof segment> => Boolean(segment));
+
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${area.image})` }}>
+      <section
+        className="page-header"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${area.image})`,
+        }}
+      >
         <div className="container">
           <p className="section-kicker">{extras.serviceDetail.kicker}</p>
           <h1>{area.title}</h1>
@@ -54,6 +68,22 @@ export default async function ServiceDetailPage({
 
             <h2>{extras.serviceDetail.why}</h2>
             <p>{extras.serviceDetail.whyCopy}</p>
+
+            {relatedSegments.length > 0 ? (
+              <>
+                <h2>{extras.serviceDetail.relatedCustomers}</h2>
+                <ul className="related-links">
+                  {relatedSegments.map((segment) => (
+                    <li key={segment.slug}>
+                      <Link href={withLang(segment.href, locale)}>
+                        {segment.title}
+                        <span aria-hidden="true"> →</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
           </article>
 
           <aside className="info-panel">
@@ -64,7 +94,7 @@ export default async function ServiceDetailPage({
               ))}
             </ul>
             <div style={{ marginTop: 28 }}>
-              <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
+              <Link className="btn btn-primary" href={withContactIntent(locale, { service: area.slug })}>
                 {extras.serviceDetail.request}
               </Link>
             </div>

@@ -12,6 +12,7 @@ type ServiceJson = {
   order: number;
   active: boolean;
   image: string;
+  segments?: string[];
   es: LocalizedFields;
   en: LocalizedFields;
   fr: LocalizedFields;
@@ -23,6 +24,7 @@ type SegmentJson = {
   order: number;
   active: boolean;
   image: string;
+  services?: string[];
   es: LocalizedFields;
   en: LocalizedFields;
   fr: LocalizedFields;
@@ -39,6 +41,7 @@ export type ServiceAreaContent = {
   whoFor: string[];
   problems: string[];
   bullets: string[];
+  segments: string[];
 };
 
 export type SegmentContent = {
@@ -49,6 +52,7 @@ export type SegmentContent = {
   blurb: string;
   problems: string[];
   solutions: string[];
+  services: string[];
 };
 
 function pickLocale<T extends Record<string, unknown>>(item: Record<Locale, T>, locale: Locale): T {
@@ -88,6 +92,7 @@ export function getServiceAreas(locale: Locale): ServiceAreaContent[] {
         whoFor: text.whoFor,
         problems: text.problems,
         bullets: text.bullets,
+        segments: item.segments ?? [],
       };
     });
 }
@@ -111,6 +116,7 @@ export function getCustomerSegments(locale: Locale): SegmentContent[] {
         blurb: text.blurb,
         problems: text.problems,
         solutions: text.solutions,
+        services: item.services ?? [],
       };
     });
 }

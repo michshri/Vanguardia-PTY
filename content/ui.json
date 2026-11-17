@@ -33,7 +33,7 @@
     },
     "services": {
       "kicker": "Servicios",
-      "heading": "Construir. Renovar. Mantener. Gestionar.",
+      "heading": "Construcción. Mantenimiento. Gestión. Obras especializadas.",
       "moreInfo": "Ver servicio"
     },
     "why": {
@@ -70,7 +70,9 @@
       "why": "Por qué Vanguardia",
       "whyCopy": "Porque cada intervención se gestiona con criterio, supervisión directa y responsabilidad clara. El cliente no tiene que coordinar a varios proveedores para saber quién responde.",
       "idealFor": "Ideal para",
-      "request": "Solicitar consulta"
+      "request": "Solicitar consulta",
+      "relatedCustomers": "Clientes que atendemos",
+      "relatedCustomersCta": "Ver cliente"
     },
     "segmentDetail": {
       "kicker": "Cliente",
@@ -78,7 +80,9 @@
       "how": "Cómo trabajamos",
       "focus": "Enfoque",
       "focusCopy": "Se prioriza la claridad del alcance, la coordinación entre trabajos y la ejecución responsable para minimizar complicaciones y proteger la propiedad.",
-      "talk": "Hablar con Vanguardia"
+      "talk": "Hablar con Vanguardia",
+      "relatedServices": "Servicios para este cliente",
+      "relatedServicesCta": "Ver servicio"
     },
     "aboutValues": [
       "Panamá",
@@ -96,28 +100,28 @@
       "messagePh": "Cuéntenos qué necesita, cuál es la propiedad o el requisito principal.",
       "clientOptions": [
         "Residencial",
-        "Comercial",
+        "Comercial e industrial",
         "PH",
         "Otro"
       ],
       "serviceOptions": [
-        "Construir",
-        "Renovar",
-        "Mantener",
-        "Gestionar",
-        "Gestión de proyectos"
+        "Construcción y renovación",
+        "Mantenimiento y reparaciones",
+        "Gestión de propiedad",
+        "Gestión de proyectos",
+        "Obras especializadas"
       ]
     },
     "pages": {
       "services": {
         "kicker": "Servicios",
-        "title": "Construir. Renovar. Mantener. Gestionar.",
+        "title": "Construcción. Mantenimiento. Gestión. Obras especializadas.",
         "intro": "Cinco servicios claros. Un solo responsable para planificar, ejecutar y proteger el valor de la propiedad.",
         "cta": "Ver servicio"
       },
       "customers": {
         "kicker": "Clientes",
-        "title": "Residencial. Comercial. PH.",
+        "title": "Residencial. Comercial e industrial. PH.",
         "intro": "Tres tipos de cliente. El mismo estándar: un solo responsable, alcance claro y ejecución transparente.",
         "cta": "Ver"
       },
@@ -164,7 +168,7 @@
     },
     "services": {
       "kicker": "Services",
-      "heading": "Build. Renovate. Maintain. Manage.",
+      "heading": "Construction. Maintenance. Management. Specialized works.",
       "moreInfo": "View service"
     },
     "why": {
@@ -201,7 +205,9 @@
       "why": "Why Vanguardia",
       "whyCopy": "Because every intervention is managed with judgment, direct supervision and clear accountability. The client does not have to coordinate multiple vendors to know who is responsible.",
       "idealFor": "Ideal for",
-      "request": "Request a consultation"
+      "request": "Request a consultation",
+      "relatedCustomers": "Customers we serve",
+      "relatedCustomersCta": "View customer"
     },
     "segmentDetail": {
       "kicker": "Customer",
@@ -209,7 +215,9 @@
       "how": "How we work",
       "focus": "Focus",
       "focusCopy": "We prioritize clear scope, coordination across works and responsible execution to minimize complications and protect the property.",
-      "talk": "Talk to Vanguardia"
+      "talk": "Talk to Vanguardia",
+      "relatedServices": "Services for this customer",
+      "relatedServicesCta": "View service"
     },
     "aboutValues": [
       "Panama",
@@ -227,28 +235,28 @@
       "messagePh": "Tell us what you need, which property is involved, or the main requirement.",
       "clientOptions": [
         "Residential",
-        "Commercial",
+        "Commercial & industrial",
         "PH",
         "Other"
       ],
       "serviceOptions": [
-        "Build",
-        "Renovate",
-        "Maintain",
-        "Manage",
-        "Project management"
+        "Construction & Renovation",
+        "Maintenance & Repairs",
+        "Property Management",
+        "Project Management",
+        "Specialized Building Works"
       ]
     },
     "pages": {
       "services": {
         "kicker": "Services",
-        "title": "Build. Renovate. Maintain. Manage.",
+        "title": "Construction. Maintenance. Management. Specialized works.",
         "intro": "Five clear services. One accountable partner to plan, execute and protect the value of the property.",
         "cta": "View service"
       },
       "customers": {
         "kicker": "Customers",
-        "title": "Residential. Commercial. PH.",
+        "title": "Residential. Commercial & industrial. PH.",
         "intro": "Three customer types. The same standard: one accountable partner, clear scope and transparent execution.",
         "cta": "View"
       },
@@ -295,7 +303,7 @@
     },
     "services": {
       "kicker": "Services",
-      "heading": "Construire. Rénover. Entretenir. Gérer.",
+      "heading": "Construction. Maintenance. Gestion. Travaux spécialisés.",
       "moreInfo": "Voir le service"
     },
     "why": {
@@ -332,7 +340,9 @@
       "why": "Pourquoi Vanguardia",
       "whyCopy": "Parce que chaque intervention est gérée avec jugement, supervision directe et responsabilité claire. Le client n’a pas à coordonner plusieurs prestataires pour savoir qui répond.",
       "idealFor": "Idéal pour",
-      "request": "Demander une consultation"
+      "request": "Demander une consultation",
+      "relatedCustomers": "Clients que nous accompagnons",
+      "relatedCustomersCta": "Voir le client"
     },
     "segmentDetail": {
       "kicker": "Client",
@@ -340,7 +350,9 @@
       "how": "Notre façon de travailler",
       "focus": "Approche",
       "focusCopy": "Nous priorisons la clarté du périmètre, la coordination des travaux et une exécution responsable pour limiter les complications et protéger le bien.",
-      "talk": "Parler avec Vanguardia"
+      "talk": "Parler avec Vanguardia",
+      "relatedServices": "Services pour ce client",
+      "relatedServicesCta": "Voir le service"
     },
     "aboutValues": [
       "Panama",
@@ -358,28 +370,28 @@
       "messagePh": "Dites-nous ce dont vous avez besoin, de quel bien il s’agit ou quelle est l’exigence principale.",
       "clientOptions": [
         "Résidentiel",
-        "Commercial",
+        "Commercial et industriel",
         "PH",
         "Autre"
       ],
       "serviceOptions": [
-        "Construire",
-        "Rénover",
-        "Entretenir",
-        "Gérer",
-        "Gestion de projets"
+        "Construction et rénovation",
+        "Maintenance et réparations",
+        "Gestion de propriété",
+        "Gestion de projets",
+        "Travaux spécialisés"
       ]
     },
     "pages": {
       "services": {
         "kicker": "Services",
-        "title": "Construire. Rénover. Entretenir. Gérer.",
+        "title": "Construction. Maintenance. Gestion. Travaux spécialisés.",
         "intro": "Cinq services clairs. Un seul responsable pour planifier, exécuter et protéger la valeur du bien.",
         "cta": "Voir le service"
       },
       "customers": {
         "kicker": "Clients",
-        "title": "Résidentiel. Commercial. PH.",
+        "title": "Résidentiel. Commercial et industriel. PH.",
         "intro": "Trois types de clients. Le même standard : un seul responsable, un périmètre clair et une exécution transparente.",
         "cta": "Voir"
       },

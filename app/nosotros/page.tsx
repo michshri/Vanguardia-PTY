@@ -1,16 +1,29 @@
+import type { Metadata } from 'next';
 import { resolveLocale } from '@/lib/locale';
 import { getHomeExtras } from '@/lib/localized-content';
+import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 
-export const metadata = {
-  title: 'Nosotros',
-  description: 'Vanguardia PTY es una nueva generación de una experiencia panameña de más de 50 años en construcción, propiedad y mantenimiento.',
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'about');
+  return buildPageMetadata({
+    locale,
+    path: '/nosotros',
+    title: seo.title,
+    description: seo.description,
+  });
+}
 
 const copy = {
   es: {
     kicker: 'Nosotros',
     title: 'Más de 50 años de experiencia. Una nueva generación.',
-    intro: 'Vanguardia PTY es una nueva empresa construida sobre conocimientos, relaciones y criterio acumulados por una familia panameña a lo largo de décadas en la construcción y la propiedad.',
+    intro: 'Vanguardia Constructions Group es una nueva empresa construida sobre conocimientos, relaciones y criterio acumulados por una familia panameña a lo largo de décadas en la construcción y la propiedad.',
     history: 'Una historia con raíces en Panamá',
     historyText: 'La experiencia de la familia se ha desarrollado en una variedad de contextos: PH, propiedades industriales, obras especializadas, impermeabilización, cubiertas verdes, mantenimiento y renovación. Esa trayectoria creó una comprensión práctica de los edificios, sus exigencias y la importancia de un trabajo bien ejecutado.',
     secondText: 'Vanguardia representa una nueva etapa: una compañía fresca, moderna y directa, pero con el mismo criterio de responsabilidad, cuidado y compromiso con la propiedad.',
@@ -21,7 +34,7 @@ const copy = {
   en: {
     kicker: 'About',
     title: 'More than 50 years of experience. A new generation.',
-    intro: 'Vanguardia PTY is a new company built on knowledge, relationships and judgment accumulated by a Panamanian family over decades in construction and property care.',
+    intro: 'Vanguardia Constructions Group is a new company built on knowledge, relationships and judgment accumulated by a Panamanian family over decades in construction and property care.',
     history: 'A story rooted in Panama',
     historyText: 'The family’s experience developed across a variety of contexts: condominium buildings, industrial properties, specialized works, waterproofing, green roofs, maintenance and renovation. That trajectory created a practical understanding of buildings, their demands and the importance of well-executed work.',
     secondText: 'Vanguardia represents a new chapter: a fresh, modern and direct company, yet guided by the same standards of responsibility, care and commitment to the property.',
@@ -32,7 +45,7 @@ const copy = {
   fr: {
     kicker: 'À propos',
     title: 'Plus de 50 ans d’expérience. Une nouvelle génération.',
-    intro: 'Vanguardia PTY est une nouvelle entreprise bâtie sur les connaissances, les relations et le jugement accumulés par une famille panaméenne au fil des décennies dans la construction et la gestion immobilière.',
+    intro: 'Vanguardia Constructions Group est une nouvelle entreprise bâtie sur les connaissances, les relations et le jugement accumulés par une famille panaméenne au fil des décennies dans la construction et la gestion immobilière.',
     history: 'Une histoire enracinée au Panama',
     historyText: 'L’expérience de la famille s’est développée dans de nombreux contextes : copropriétés, biens industriels, travaux spécialisés, étanchéité, toitures vertes, maintenance et rénovation. Cette trajectoire a permis de développer une compréhension pratique des bâtiments, de leurs exigences et de l’importance d’un travail bien exécuté.',
     secondText: 'Vanguardia représente une nouvelle étape : une entreprise fraîche, moderne et directe, tout en gardant le même sens de la responsabilité, du soin et de l’engagement envers la propriété.',
@@ -43,7 +56,7 @@ const copy = {
 } as const;
 
 export default async function AboutPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
   const extras = getHomeExtras(locale);

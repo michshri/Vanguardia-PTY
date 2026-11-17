@@ -1,14 +1,27 @@
+import type { Metadata } from 'next';
 import { MediaCard } from '@/components/media-card';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras } from '@/lib/localized-content';
+import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 
-export const metadata = {
-  title: 'Clientes',
-  description: 'Vanguardia atiende clientes residenciales, comerciales y de PH en Panamá con responsabilidad clara y transparencia.',
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'customers');
+  return buildPageMetadata({
+    locale,
+    path: '/quien-sirve',
+    title: seo.title,
+    description: seo.description,
+  });
+}
 
 export default async function SegmentsPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const text = getHomeExtras(locale).pages.customers;
   const customerSegments = getCustomerSegments(locale);

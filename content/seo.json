@@ -1,0 +1,125 @@
+{
+  "es": {
+    "home": {
+      "title": "Vanguardia Constructions Group | Construcción, mantenimiento y gestión de propiedad en Panamá",
+      "description": "Vanguardia Constructions Group ofrece construcción, renovación, mantenimiento, gestión de propiedad, gestión de proyectos y obras especializadas para viviendas, comercio, industria y PH en Panamá."
+    },
+    "services": {
+      "title": "Servicios",
+      "description": "Cinco servicios claros: construcción y renovación, mantenimiento y reparaciones, gestión de propiedad, gestión de proyectos y obras especializadas en Panamá."
+    },
+    "customers": {
+      "title": "Clientes",
+      "description": "Atendemos clientes residenciales, comerciales e industriales y de PH en Panamá con un solo responsable y alcance claro."
+    },
+    "projects": {
+      "title": "Proyectos",
+      "description": "Trabajos organizados por tipo de cliente y por servicio. Los casos de proyecto se irán añadiendo según el trabajo realizado."
+    },
+    "about": {
+      "title": "Nosotros",
+      "description": "Vanguardia Constructions Group es una nueva generación construida sobre más de 50 años de experiencia familiar panameña en construcción, propiedad y mantenimiento."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Solicite una consulta con Vanguardia Constructions Group para construir, mantener o gestionar su propiedad en Panamá."
+    },
+    "serviceFallback": {
+      "description": "Servicio de Vanguardia Constructions Group en Panamá: planificación clara, supervisión directa y responsabilidad de principio a fin."
+    },
+    "segmentFallback": {
+      "description": "Cómo Vanguardia Constructions Group trabaja con este tipo de cliente en Panamá, con alcance claro y un solo responsable."
+    },
+    "keywords": [
+      "construcción Panamá",
+      "construcción empresa Panamá",
+      "mantenimiento Panamá",
+      "PH mantenimiento Panamá",
+      "impermeabilización Panamá",
+      "gestión de proyectos Panamá",
+      "Vanguardia Constructions Group"
+    ]
+  },
+  "en": {
+    "home": {
+      "title": "Vanguardia Constructions Group | Construction, maintenance and property management in Panama",
+      "description": "Vanguardia Constructions Group provides construction, renovation, maintenance, property management, project management and specialized building works for homes, commercial and industrial properties, and PH communities in Panama."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Five clear services: construction and renovation, maintenance and repairs, property management, project management and specialized building works in Panama."
+    },
+    "customers": {
+      "title": "Customers",
+      "description": "We serve residential, commercial and industrial, and PH customers in Panama with one accountable partner and clear scope."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Work organized by customer type and by service. Project case studies will be added as completed work grows."
+    },
+    "about": {
+      "title": "About us",
+      "description": "Vanguardia Constructions Group is a new generation built on more than 50 years of Panamanian family experience in construction, property and maintenance."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Request a consultation with Vanguardia Constructions Group to build, maintain or manage your property in Panama."
+    },
+    "serviceFallback": {
+      "description": "A Vanguardia Constructions Group service in Panama: clear planning, direct supervision and accountability from start to finish."
+    },
+    "segmentFallback": {
+      "description": "How Vanguardia Constructions Group works with this type of customer in Panama, with clear scope and one accountable partner."
+    },
+    "keywords": [
+      "construction Panama",
+      "construction company Panama",
+      "maintenance Panama",
+      "PH maintenance Panama",
+      "waterproofing Panama",
+      "project management Panama",
+      "Vanguardia Constructions Group"
+    ]
+  },
+  "fr": {
+    "home": {
+      "title": "Vanguardia Constructions Group | Construction, maintenance et gestion de propriété au Panama",
+      "description": "Vanguardia Constructions Group propose construction, rénovation, maintenance, gestion de propriété, gestion de projets et travaux spécialisés pour logements, biens commerciaux et industriels, et PH au Panama."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Cinq services clairs : construction et rénovation, maintenance et réparations, gestion de propriété, gestion de projets et travaux spécialisés au Panama."
+    },
+    "customers": {
+      "title": "Clients",
+      "description": "Nous accompagnons les clients résidentiels, commerciaux et industriels, et les PH au Panama avec un seul responsable et un périmètre clair."
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Des travaux organisés par type de client et par service. Les études de cas seront ajoutées au fil des travaux réalisés."
+    },
+    "about": {
+      "title": "À propos",
+      "description": "Vanguardia Constructions Group est une nouvelle génération bâtie sur plus de 50 ans d’expérience familiale panaméenne en construction, immobilier et maintenance."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Demandez une consultation avec Vanguardia Constructions Group pour construire, entretenir ou gérer votre bien au Panama."
+    },
+    "serviceFallback": {
+      "description": "Un service de Vanguardia Constructions Group au Panama : planification claire, supervision directe et responsabilité du début à la fin."
+    },
+    "segmentFallback": {
+      "description": "Comment Vanguardia Constructions Group travaille avec ce type de client au Panama, avec un périmètre clair et un seul responsable."
+    },
+    "keywords": [
+      "construction Panama",
+      "entreprise construction Panama",
+      "maintenance Panama",
+      "PH maintenance Panama",
+      "étanchéité Panama",
+      "gestion de projets Panama",
+      "Vanguardia Constructions Group"
+    ]
+  }
+}

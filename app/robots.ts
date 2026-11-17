@@ -1,12 +1,15 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-config';
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = getSiteUrl();
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.vanguardiapty.com/sitemap.xml',
-    host: 'https://www.vanguardiapty.com',
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

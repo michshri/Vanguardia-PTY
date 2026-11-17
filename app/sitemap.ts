@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { segmentSlugs, serviceSlugs } from '@/lib/localized-content';
+import { getSiteUrl } from '@/lib/site-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.vanguardiapty.com';
+  const baseUrl = getSiteUrl();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

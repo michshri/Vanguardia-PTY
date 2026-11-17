@@ -4,8 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { getSettings } from '@/lib/content';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import { getCompanyName } from '@/lib/site-config';
 import { getDictionary } from '@/lib/translations';
 
 const localeLabels = [
@@ -54,9 +56,12 @@ function SiteHeaderInner() {
   const searchParams = useSearchParams();
   const locale = resolveLocale(searchParams.get('lang'));
   const dict = getDictionary(locale);
+  const company = getCompanyName();
+  const settings = getSettings();
   const services = getServiceAreas(locale);
   const segments = getCustomerSegments(locale);
   const [menuOpen, setMenuOpen] = useState(false);
+  const whatsappHref = `${settings.company.whatsappUrlPlaceholder}?text=${encodeURIComponent(`Hola ${company}, me gustaría solicitar una consulta.`)}`;
 
   const navItems = [
     { href: '/', label: dict.nav.home },
@@ -93,9 +98,9 @@ function SiteHeaderInner() {
   return (
     <header className={`site-header${menuOpen ? ' is-open' : ''}`}>
       <div className="container header-inner">
-        <Link href={withLang('/', locale)} className="brand" aria-label="Vanguardia PTY home" onClick={closeMenu}>
+        <Link href={withLang('/', locale)} className="brand" aria-label={`${company} home`} onClick={closeMenu}>
           <span className="brand-mark" aria-hidden="true">
-            <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={170} height={44} priority />
+            <Image src="/vanguardia-logo.png" alt={`${company} logo`} width={170} height={44} priority />
           </span>
         </Link>
 
@@ -124,12 +129,7 @@ function SiteHeaderInner() {
 
         <div className="header-actions desktop-actions">
           <LocaleSwitcher />
-          <a
-            className="btn btn-secondary"
-            href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta."
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="btn btn-secondary" href={whatsappHref} target="_blank" rel="noreferrer">
             {dict.nav.whatsapp}
           </a>
           <Link className="btn btn-primary" href={withLang('/contacto', locale)}>
@@ -179,13 +179,7 @@ function SiteHeaderInner() {
 
           <div className="mobile-nav-actions">
             <LocaleSwitcher onNavigate={closeMenu} />
-            <a
-              className="btn btn-secondary"
-              href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta."
-              target="_blank"
-              rel="noreferrer"
-              onClick={closeMenu}
-            >
+            <a className="btn btn-secondary" href={whatsappHref} target="_blank" rel="noreferrer" onClick={closeMenu}>
               {dict.nav.whatsapp}
             </a>
             <Link className="btn btn-primary" href={withLang('/contacto', locale)} onClick={closeMenu}>
@@ -204,9 +198,9 @@ export function SiteHeader() {
       fallback={
         <header className="site-header">
           <div className="container header-inner">
-            <Link href="/" className="brand" aria-label="Vanguardia PTY home">
+            <Link href="/" className="brand" aria-label="Vanguardia Constructions Group home">
               <span className="brand-mark" aria-hidden="true">
-                <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={170} height={44} priority />
+                <Image src="/vanguardia-logo.png" alt="Vanguardia Constructions Group logo" width={170} height={44} priority />
               </span>
             </Link>
             <button type="button" className="menu-toggle" aria-label="Open menu" disabled>
@@ -227,9 +221,12 @@ function SiteFooterInner() {
   const searchParams = useSearchParams();
   const locale = resolveLocale(searchParams.get('lang'));
   const dict = getDictionary(locale);
+  const company = getCompanyName();
+  const settings = getSettings();
   const extras = getHomeExtras(locale);
   const services = getServiceAreas(locale).map((area) => ({ href: area.href, label: area.title }));
   const segments = getCustomerSegments(locale).map((segment) => ({ href: segment.href, label: segment.title }));
+  const whatsappHref = `${settings.company.whatsappUrlPlaceholder}?text=${encodeURIComponent(`Hola ${company}`)}`;
 
   return (
     <footer className="site-footer">
@@ -237,7 +234,7 @@ function SiteFooterInner() {
         <div>
           <div className="brand brand-footer">
             <span className="brand-mark" aria-hidden="true">
-              <Image src="/vanguardia-logo.png" alt="Vanguardia PTY logo" width={160} height={42} />
+              <Image src="/vanguardia-logo.png" alt={`${company} logo`} width={160} height={42} />
             </span>
           </div>
           <p className="footer-copy">{extras.footer.copy}</p>
@@ -272,10 +269,10 @@ function SiteFooterInner() {
               <Link href={withLang('/contacto', locale)}>{extras.footer.request}</Link>
             </li>
             <li>
-              <a href="mailto:contacto@vanguardiapty.com">contacto@vanguardiapty.com</a>
+              <a href={`mailto:${settings.company.emailPlaceholder}`}>{settings.company.emailPlaceholder}</a>
             </li>
             <li>
-              <a href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY" target="_blank" rel="noreferrer">
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
                 {dict.nav.whatsapp}
               </a>
             </li>
@@ -284,7 +281,7 @@ function SiteFooterInner() {
       </div>
 
       <div className="container footer-bottom">
-        <span>© 2026 Vanguardia PTY</span>
+        <span>© {new Date().getFullYear()} {company}</span>
         <span>{extras.footer.panama}</span>
       </div>
     </footer>
@@ -297,7 +294,7 @@ export function SiteFooter() {
       fallback={
         <footer className="site-footer">
           <div className="container footer-bottom">
-            <span>© 2026 Vanguardia PTY</span>
+            <span>© {new Date().getFullYear()} Vanguardia Constructions Group</span>
           </div>
         </footer>
       }

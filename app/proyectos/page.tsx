@@ -1,14 +1,27 @@
+import type { Metadata } from 'next';
 import { MediaCard } from '@/components/media-card';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 
-export const metadata = {
-  title: 'Proyectos',
-  description: 'Portafolio de trabajos, proyectos y experiencias de Vanguardia en construcción, mantenimiento y gestión de propiedad en Panamá.',
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'projects');
+  return buildPageMetadata({
+    locale,
+    path: '/proyectos',
+    title: seo.title,
+    description: seo.description,
+  });
+}
 
 export default async function ProjectsPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const text = getHomeExtras(locale).pages.projects;
   const segments = getCustomerSegments(locale);

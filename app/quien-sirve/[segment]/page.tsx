@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
@@ -7,9 +8,35 @@ import {
   getServiceArea,
   segmentSlugs,
 } from '@/lib/localized-content';
+import { buildPageMetadata, getSeo, resolveSearchParams } from '@/lib/site-config';
 
 export function generateStaticParams() {
   return segmentSlugs.map((segment) => ({ segment }));
+}
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ segment: string }>;
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const { segment: segmentSlug } = await params;
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const segment = getCustomerSegment(locale, segmentSlug);
+  const seo = getSeo(locale);
+
+  if (!segment) {
+    return {};
+  }
+
+  return buildPageMetadata({
+    locale,
+    path: segment.href,
+    title: segment.title,
+    description: segment.blurb || seo.segmentFallback.description,
+  });
 }
 
 export default async function SegmentDetailPage({
@@ -20,7 +47,7 @@ export default async function SegmentDetailPage({
   searchParams?: Promise<{ lang?: string }> | { lang?: string };
 }) {
   const { segment: segmentSlug } = await params;
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const segment = getCustomerSegment(locale, segmentSlug);
   const extras = getHomeExtras(locale);

@@ -1,12 +1,31 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MediaCard } from '@/components/media-card';
 import { getSettings, getUi } from '@/lib/content';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 import { getDictionary } from '@/lib/translations';
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'home');
+  return buildPageMetadata({
+    locale,
+    path: '/',
+    title: seo.title,
+    description: seo.description,
+    absoluteTitle: true,
+  });
+}
+
 export default async function HomePage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const dict = getDictionary(locale);
   const extras = getHomeExtras(locale);

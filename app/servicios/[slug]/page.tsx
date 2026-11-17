@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
@@ -7,9 +8,35 @@ import {
   getServiceArea,
   serviceSlugs,
 } from '@/lib/localized-content';
+import { buildPageMetadata, getSeo, resolveSearchParams } from '@/lib/site-config';
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const area = getServiceArea(locale, slug);
+  const seo = getSeo(locale);
+
+  if (!area) {
+    return {};
+  }
+
+  return buildPageMetadata({
+    locale,
+    path: area.href,
+    title: area.title,
+    description: area.summary || seo.serviceFallback.description,
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -20,7 +47,7 @@ export default async function ServiceDetailPage({
   searchParams?: Promise<{ lang?: string }> | { lang?: string };
 }) {
   const { slug } = await params;
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const area = getServiceArea(locale, slug);
   const extras = getHomeExtras(locale);

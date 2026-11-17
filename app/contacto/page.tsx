@@ -1,11 +1,9 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getSettings } from '@/lib/content';
 import { resolveLocale } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
-
-export const metadata = {
-  title: 'Contacto',
-  description: 'Solicite una consulta con Vanguardia PTY para construir, mantener o gestionar su propiedad en Panamá.',
-};
+import { buildPageMetadata, getCompanyName, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 
 const copy = {
   es: {
@@ -58,15 +56,33 @@ const copy = {
   },
 } as const;
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string; service?: string; segment?: string }> | { lang?: string; service?: string; segment?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'contact');
+  return buildPageMetadata({
+    locale,
+    path: '/contacto',
+    title: seo.title,
+    description: seo.description,
+  });
+}
+
 export default async function ContactPage({
   searchParams,
 }: {
   searchParams?: Promise<{ lang?: string; service?: string; segment?: string }> | { lang?: string; service?: string; segment?: string };
 }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
   const form = getHomeExtras(locale).contactForm;
+  const settings = getSettings();
+  const company = getCompanyName();
   const services = getServiceAreas(locale);
   const segments = getCustomerSegments(locale);
   const otherOption = form.clientOptions[form.clientOptions.length - 1] ?? 'Otro';
@@ -144,14 +160,14 @@ export default async function ContactPage({
           <aside className="info-panel">
             <h3>{text.direct}</h3>
             <ul>
-              <li>Email: contacto@vanguardiapty.com</li>
-              <li>WhatsApp: +507 0000-0000</li>
+              <li>Email: {settings.company.emailPlaceholder}</li>
+              <li>WhatsApp: {settings.company.whatsappDisplayPlaceholder}</li>
               <li>{locale === 'en' || locale === 'fr' ? 'Panama' : 'Panamá'}</li>
             </ul>
             <div style={{ marginTop: 28 }}>
               <Link
                 className="btn btn-secondary"
-                href="https://wa.me/50700000000?text=Hola%20Vanguardia%20PTY%2C%20me%20gustar%C3%ADa%20solicitar%20una%20consulta."
+                href={`${settings.company.whatsappUrlPlaceholder}?text=${encodeURIComponent(`Hola ${company}, me gustaría solicitar una consulta.`)}`}
                 target="_blank"
                 rel="noreferrer"
               >

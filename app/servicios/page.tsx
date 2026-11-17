@@ -1,14 +1,27 @@
+import type { Metadata } from 'next';
 import { MediaCard } from '@/components/media-card';
 import { resolveLocale, withLang } from '@/lib/locale';
 import { getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
 
-export const metadata = {
-  title: 'Servicios',
-  description: 'Servicios de construcción, mantenimiento, gestión de proyectos y obras especializadas para propiedades en Panamá.',
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+}): Promise<Metadata> {
+  const resolvedParams = await resolveSearchParams(searchParams);
+  const locale = resolveLocale(resolvedParams?.lang);
+  const seo = getStaticSeo(locale, 'services');
+  return buildPageMetadata({
+    locale,
+    path: '/servicios',
+    title: seo.title,
+    description: seo.description,
+  });
+}
 
 export default async function ServiciosPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = searchParams instanceof Promise ? await searchParams : searchParams;
+  const resolvedParams = await resolveSearchParams(searchParams);
   const locale = resolveLocale(resolvedParams?.lang);
   const text = getHomeExtras(locale).pages.services;
   const serviceAreas = getServiceAreas(locale);

@@ -3,21 +3,52 @@ import { defaultLocale, locales, type Locale } from '@/lib/locale-types';
 export type { Locale };
 export { defaultLocale, locales };
 
-export function resolveLocale(lang?: string | null): Locale {
-  const value = (lang ?? '').toLowerCase();
-  return locales.includes(value as Locale) ? (value as Locale) : defaultLocale;
+export function isLocale(value: string | null | undefined): value is Locale {
+  return !!value && locales.includes(value as Locale);
 }
 
-/** Append ?lang= for non-default locales; leave Spanish URLs clean. */
-export function withLang(href: string, locale: Locale): string {
-  if (locale === defaultLocale) return href;
+export function resolveLocale(lang?: string | null): Locale {
+  const value = (lang ?? '').toLowerCase();
+  return isLocale(value) ? value : defaultLocale;
+}
 
+/** Locales that appear as a URL prefix. Spanish stays unprefixed. */
+export function hasLocalePrefix(locale: Locale) {
+  return locale !== defaultLocale;
+}
+
+/** Strip /en or /fr from the start of a pathname. */
+export function stripLocalePrefix(pathname: string): string {
+  if (pathname === '/en' || pathname === '/fr') return '/';
+  if (pathname.startsWith('/en/')) return pathname.slice(3) || '/';
+  if (pathname.startsWith('/fr/')) return pathname.slice(3) || '/';
+  return pathname || '/';
+}
+
+export function localeFromPathname(pathname: string): Locale {
+  if (pathname === '/en' || pathname.startsWith('/en/')) return 'en';
+  if (pathname === '/fr' || pathname.startsWith('/fr/')) return 'fr';
+  return defaultLocale;
+}
+
+/**
+ * Build a public href for a locale.
+ * Spanish: /servicios
+ * English/French: /en/servicios, /fr/servicios
+ * Preserves query string and hash, except legacy ?lang=.
+ */
+export function withLang(href: string, locale: Locale): string {
   const [pathAndQuery, hash] = href.split('#');
-  const [path, existingQuery] = pathAndQuery.split('?');
+  const [rawPath, existingQuery] = pathAndQuery.split('?');
+  const path = stripLocalePrefix(rawPath || '/');
   const params = new URLSearchParams(existingQuery || '');
-  params.set('lang', locale);
+  params.delete('lang');
+
+  const localizedPath =
+    locale === defaultLocale ? path || '/' : `/${locale}${path === '/' ? '' : path}`;
+
   const query = params.toString();
-  return `${path}?${query}${hash ? `#${hash}` : ''}`;
+  return `${localizedPath}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
 }
 
 /** Build a contact URL that can pre-select service and/or customer segment. */
@@ -28,7 +59,10 @@ export function withContactIntent(
   const params = new URLSearchParams();
   if (intent.service) params.set('service', intent.service);
   if (intent.segment) params.set('segment', intent.segment);
-  if (locale !== defaultLocale) params.set('lang', locale);
   const query = params.toString();
-  return query ? `/contacto?${query}` : '/contacto';
+  return withLang(query ? `/contacto?${query}` : '/contacto', locale);
+}
+
+export function localizedPath(path: string, locale: Locale): string {
+  return withLang(path, locale);
 }

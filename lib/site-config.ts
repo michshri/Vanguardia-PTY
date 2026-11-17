@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import seoJson from '@/content/seo.json';
 import { getSettings } from '@/lib/content';
-import { defaultLocale, type Locale } from '@/lib/locale-types';
+import { defaultLocale, locales, localizedPath, type Locale } from '@/lib/locale';
 
 type SeoPageKey = 'home' | 'services' | 'customers' | 'projects' | 'about' | 'contact';
 
@@ -36,6 +36,18 @@ export function ogLocaleFor(locale: Locale) {
   return 'es_PA';
 }
 
+export function languageAlternates(path: string) {
+  const siteUrl = getSiteUrl();
+  const barePath = path.startsWith('/') ? path : `/${path}`;
+  const languages: Record<string, string> = {
+    'x-default': `${siteUrl}${localizedPath(barePath, defaultLocale)}`,
+    'es-PA': `${siteUrl}${localizedPath(barePath, 'es')}`,
+    en: `${siteUrl}${localizedPath(barePath, 'en')}`,
+    fr: `${siteUrl}${localizedPath(barePath, 'fr')}`,
+  };
+  return languages;
+}
+
 export function buildPageMetadata({
   locale,
   path,
@@ -51,7 +63,8 @@ export function buildPageMetadata({
 }): Metadata {
   const siteUrl = getSiteUrl();
   const company = getCompanyName();
-  const canonicalPath = path.startsWith('/') ? path : `/${path}`;
+  const barePath = path.startsWith('/') ? path : `/${path}`;
+  const canonicalPath = localizedPath(barePath, locale);
   const seo = getSeo(locale);
 
   return {
@@ -60,6 +73,7 @@ export function buildPageMetadata({
     keywords: seo.keywords,
     alternates: {
       canonical: canonicalPath,
+      languages: languageAlternates(barePath),
     },
     openGraph: {
       title,
@@ -76,8 +90,16 @@ export function getStaticSeo(locale: Locale, key: SeoPageKey) {
   return getSeo(locale)[key];
 }
 
+export async function resolveParams<T extends Record<string, string>>(
+  params: Promise<T> | T,
+): Promise<T> {
+  return params instanceof Promise ? await params : params;
+}
+
 export async function resolveSearchParams<T extends Record<string, string | undefined>>(
   searchParams?: Promise<T> | T,
 ): Promise<T | undefined> {
   return searchParams instanceof Promise ? await searchParams : searchParams;
 }
+
+export { locales };

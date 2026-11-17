@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
+import { isLocale, withContactIntent, withLang, type Locale } from '@/lib/locale';
 import {
   getCustomerSegment,
   getHomeExtras,
   getServiceArea,
   segmentSlugs,
 } from '@/lib/localized-content';
-import { buildPageMetadata, getSeo, resolveSearchParams } from '@/lib/site-config';
+import { buildPageMetadata, getSeo, resolveParams } from '@/lib/site-config';
 
 export function generateStaticParams() {
   return segmentSlugs.map((segment) => ({ segment }));
@@ -16,14 +16,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
-  params: Promise<{ segment: string }>;
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string; segment: string }>;
 }): Promise<Metadata> {
-  const { segment: segmentSlug } = await params;
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale, segment: segmentSlug } = await resolveParams(params);
+  if (!isLocale(rawLocale)) return {};
+  const locale = rawLocale as Locale;
   const segment = getCustomerSegment(locale, segmentSlug);
   const seo = getSeo(locale);
 
@@ -41,14 +39,12 @@ export async function generateMetadata({
 
 export default async function SegmentDetailPage({
   params,
-  searchParams,
 }: {
-  params: Promise<{ segment: string }>;
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string; segment: string }>;
 }) {
-  const { segment: segmentSlug } = await params;
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale, segment: segmentSlug } = await resolveParams(params);
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale as Locale;
   const segment = getCustomerSegment(locale, segmentSlug);
   const extras = getHomeExtras(locale);
 

@@ -1,16 +1,18 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { MediaCard } from '@/components/media-card';
-import { resolveLocale, withLang } from '@/lib/locale';
+import { isLocale, withLang, type Locale } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras } from '@/lib/localized-content';
-import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
+import { buildPageMetadata, getStaticSeo, resolveParams } from '@/lib/site-config';
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) return {};
+  const locale = rawLocale as Locale;
   const seo = getStaticSeo(locale, 'customers');
   return buildPageMetadata({
     locale,
@@ -20,9 +22,10 @@ export async function generateMetadata({
   });
 }
 
-export default async function SegmentsPage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+export default async function SegmentsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale as Locale;
   const text = getHomeExtras(locale).pages.customers;
   const customerSegments = getCustomerSegments(locale);
 

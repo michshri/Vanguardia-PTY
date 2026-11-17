@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { getSettings } from '@/lib/content';
-import { resolveLocale, withLang } from '@/lib/locale';
+import { localeFromPathname, stripLocalePrefix, withLang } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
 import { getCompanyName } from '@/lib/site-config';
 import { getDictionary } from '@/lib/translations';
@@ -19,21 +19,15 @@ const localeLabels = [
 function LocaleSwitcher({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
+  const activeLocale = localeFromPathname(pathname);
 
   const getLocaleHref = (locale: 'es' | 'en' | 'fr') => {
+    const barePath = stripLocalePrefix(pathname);
     const params = new URLSearchParams(searchParams.toString());
-
-    if (locale === 'es') {
-      params.delete('lang');
-    } else {
-      params.set('lang', locale);
-    }
-
-    const queryString = params.toString();
-    return `${pathname}${queryString ? `?${queryString}` : ''}`;
+    params.delete('lang');
+    const query = params.toString();
+    return withLang(query ? `${barePath}?${query}` : barePath, locale);
   };
-
-  const activeLang = searchParams.get('lang');
 
   return (
     <div className="language-switcher" aria-label="Language selector">
@@ -41,7 +35,7 @@ function LocaleSwitcher({ onNavigate }: { onNavigate?: () => void }) {
         <Link
           key={locale.code}
           href={getLocaleHref(locale.code)}
-          className={`lang-pill ${activeLang === locale.code || (!activeLang && locale.code === 'es') ? 'active' : ''}`}
+          className={`lang-pill ${activeLocale === locale.code ? 'active' : ''}`}
           onClick={onNavigate}
         >
           {locale.label}
@@ -54,7 +48,7 @@ function LocaleSwitcher({ onNavigate }: { onNavigate?: () => void }) {
 function SiteHeaderInner() {
   const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
-  const locale = resolveLocale(searchParams.get('lang'));
+  const locale = localeFromPathname(pathname);
   const dict = getDictionary(locale);
   const company = getCompanyName();
   const settings = getSettings();
@@ -218,8 +212,8 @@ export function SiteHeader() {
 }
 
 function SiteFooterInner() {
-  const searchParams = useSearchParams();
-  const locale = resolveLocale(searchParams.get('lang'));
+  const pathname = usePathname() || '/';
+  const locale = localeFromPathname(pathname);
   const dict = getDictionary(locale);
   const company = getCompanyName();
   const settings = getSettings();

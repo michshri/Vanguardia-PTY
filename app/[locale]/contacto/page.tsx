@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getSettings } from '@/lib/content';
-import { resolveLocale } from '@/lib/locale';
+import { isLocale, type Locale } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
-import { buildPageMetadata, getCompanyName, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
+import { buildPageMetadata, getCompanyName, getStaticSeo, resolveParams, resolveSearchParams } from '@/lib/site-config';
 
 const copy = {
   es: {
@@ -57,12 +58,13 @@ const copy = {
 } as const;
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Promise<{ lang?: string; service?: string; segment?: string }> | { lang?: string; service?: string; segment?: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) return {};
+  const locale = rawLocale as Locale;
   const seo = getStaticSeo(locale, 'contact');
   return buildPageMetadata({
     locale,
@@ -73,12 +75,16 @@ export async function generateMetadata({
 }
 
 export default async function ContactPage({
+  params,
   searchParams,
 }: {
-  searchParams?: Promise<{ lang?: string; service?: string; segment?: string }> | { lang?: string; service?: string; segment?: string };
+  params: Promise<{ locale: string }>;
+  searchParams?: Promise<{ service?: string; segment?: string }> | { service?: string; segment?: string };
 }) {
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale as Locale;
   const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
   const text = copy[locale];
   const form = getHomeExtras(locale).contactForm;
   const settings = getSettings();

@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { resolveLocale, withContactIntent, withLang } from '@/lib/locale';
+import { isLocale, withContactIntent, withLang, type Locale } from '@/lib/locale';
 import {
   getCustomerSegment,
   getHomeExtras,
   getServiceArea,
   serviceSlugs,
 } from '@/lib/localized-content';
-import { buildPageMetadata, getSeo, resolveSearchParams } from '@/lib/site-config';
+import { buildPageMetadata, getSeo, resolveParams } from '@/lib/site-config';
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
@@ -16,14 +16,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
-  params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale, slug } = await resolveParams(params);
+  if (!isLocale(rawLocale)) return {};
+  const locale = rawLocale as Locale;
   const area = getServiceArea(locale, slug);
   const seo = getSeo(locale);
 
@@ -41,14 +39,12 @@ export async function generateMetadata({
 
 export default async function ServiceDetailPage({
   params,
-  searchParams,
 }: {
-  params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale, slug } = await resolveParams(params);
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale as Locale;
   const area = getServiceArea(locale, slug);
   const extras = getHomeExtras(locale);
 

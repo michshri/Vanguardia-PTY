@@ -1,32 +1,47 @@
 import type { MetadataRoute } from 'next';
 import { segmentSlugs, serviceSlugs } from '@/lib/localized-content';
-import { getSiteUrl } from '@/lib/site-config';
+import { locales, localizedPath, type Locale } from '@/lib/locale';
+import { getSiteUrl, languageAlternates } from '@/lib/site-config';
+
+function entry(path: string, locale: Locale, priority: number, changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']) {
+  const siteUrl = getSiteUrl();
+  const localized = localizedPath(path, locale);
+  return {
+    url: `${siteUrl}${localized}`,
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
+    alternates: {
+      languages: languageAlternates(path),
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getSiteUrl();
-
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${baseUrl}/servicios`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/quien-sirve`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/proyectos`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${baseUrl}/nosotros`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/contacto`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+  const staticPaths: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = [
+    { path: '/', priority: 1, changeFrequency: 'weekly' },
+    { path: '/servicios', priority: 0.8, changeFrequency: 'weekly' },
+    { path: '/quien-sirve', priority: 0.8, changeFrequency: 'weekly' },
+    { path: '/proyectos', priority: 0.7, changeFrequency: 'weekly' },
+    { path: '/nosotros', priority: 0.7, changeFrequency: 'monthly' },
+    { path: '/contacto', priority: 0.9, changeFrequency: 'monthly' },
   ];
 
-  const serviceRoutes = serviceSlugs.map((slug) => ({
-    url: `${baseUrl}/servicios/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const servicePaths = serviceSlugs.map((slug) => `/servicios/${slug}`);
+  const segmentPaths = segmentSlugs.map((slug) => `/quien-sirve/${slug}`);
 
-  const segmentRoutes = segmentSlugs.map((slug) => ({
-    url: `${baseUrl}/quien-sirve/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const allPaths = [
+    ...staticPaths.map((item) => item.path),
+    ...servicePaths,
+    ...segmentPaths,
+  ];
 
-  return [...staticRoutes, ...serviceRoutes, ...segmentRoutes];
+  const metaByPath = new Map(staticPaths.map((item) => [item.path, item]));
+
+  return locales.flatMap((locale) =>
+    allPaths.map((path) => {
+      const meta = metaByPath.get(path);
+      return entry(path, locale, meta?.priority ?? 0.7, meta?.changeFrequency ?? 'monthly');
+    }),
+  );
 }

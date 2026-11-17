@@ -1,19 +1,21 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MediaCard } from '@/components/media-card';
 import { getSettings, getUi } from '@/lib/content';
-import { resolveLocale, withLang } from '@/lib/locale';
+import { isLocale, withLang, type Locale } from '@/lib/locale';
 import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
-import { buildPageMetadata, getStaticSeo, resolveSearchParams } from '@/lib/site-config';
+import { buildPageMetadata, getStaticSeo, resolveParams } from '@/lib/site-config';
 import { getDictionary } from '@/lib/translations';
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) return {};
+  const locale = rawLocale as Locale;
   const seo = getStaticSeo(locale, 'home');
   return buildPageMetadata({
     locale,
@@ -24,9 +26,10 @@ export async function generateMetadata({
   });
 }
 
-export default async function HomePage({ searchParams }: { searchParams?: Promise<{ lang?: string }> | { lang?: string } }) {
-  const resolvedParams = await resolveSearchParams(searchParams);
-  const locale = resolveLocale(resolvedParams?.lang);
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: rawLocale } = await resolveParams(params);
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale as Locale;
   const dict = getDictionary(locale);
   const extras = getHomeExtras(locale);
   const ui = getUi(locale);

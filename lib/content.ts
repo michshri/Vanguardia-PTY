@@ -1,3 +1,5 @@
+import pageHeadersJson from '@/content/page-headers.json';
+import projectsJson from '@/content/projects.json';
 import segmentsJson from '@/content/segments.json';
 import servicesJson from '@/content/services.json';
 import settingsJson from '@/content/settings.json';
@@ -55,6 +57,34 @@ export type SegmentContent = {
   services: string[];
 };
 
+export type ProjectContent = {
+  slug: string;
+  href: string;
+  image: string;
+  year?: string;
+  location?: string;
+  serviceSlugs: string[];
+  segmentSlugs: string[];
+  title: string;
+  summary: string;
+  description: string;
+};
+
+type ProjectJson = {
+  slug: string;
+  href: string;
+  order: number;
+  active: boolean;
+  image: string;
+  year?: string;
+  location?: string;
+  serviceSlugs?: string[];
+  segmentSlugs?: string[];
+  es: LocalizedFields;
+  en: LocalizedFields;
+  fr: LocalizedFields;
+};
+
 function pickLocale<T extends Record<string, unknown>>(item: Record<Locale, T>, locale: Locale): T {
   return item[locale] || item[defaultLocale];
 }
@@ -65,6 +95,39 @@ export function getUi(locale: Locale) {
 
 export function getSettings() {
   return settingsJson;
+}
+
+export function getPageHeaderImage(key: keyof typeof pageHeadersJson) {
+  return pageHeadersJson[key];
+}
+
+export function getProjects(locale: Locale): ProjectContent[] {
+  return (projectsJson as ProjectJson[])
+    .filter((item) => item.active !== false)
+    .sort((a, b) => a.order - b.order)
+    .map((item) => {
+      const text = pickLocale(item, locale) as {
+        title: string;
+        summary: string;
+        description: string;
+      };
+      return {
+        slug: item.slug,
+        href: item.href || `/proyectos/${item.slug}`,
+        image: item.image,
+        year: item.year,
+        location: item.location,
+        serviceSlugs: item.serviceSlugs ?? [],
+        segmentSlugs: item.segmentSlugs ?? [],
+        title: text.title,
+        summary: text.summary,
+        description: text.description,
+      };
+    });
+}
+
+export function hasPublishedProjects() {
+  return (projectsJson as ProjectJson[]).some((item) => item.active !== false);
 }
 
 export function getServiceAreas(locale: Locale): ServiceAreaContent[] {

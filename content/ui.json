@@ -130,7 +130,11 @@
         "title": "Trabajos organizados por cliente y por servicio.",
         "intro": "Explore nuestros segmentos de clientes y servicios. Los casos de proyecto se irán añadiendo según el trabajo realizado.",
         "customers": "Por tipo de cliente",
-        "services": "Por tipo de servicio"
+        "services": "Por tipo de servicio",
+        "emptyTitle": "Los casos de proyecto se irán publicando aquí.",
+        "emptyCopy": "Mientras tanto, puede explorar el trabajo por tipo de cliente o por servicio. Añadiremos ejemplos reales solo cuando correspondan a trabajos realizados.",
+        "viewProjects": "Ver proyectos",
+        "viewCta": "Explorar"
       }
     }
   },
@@ -265,7 +269,11 @@
         "title": "Work organized by customer and by service.",
         "intro": "Explore our customer segments and services. Project case studies will be added as completed work grows.",
         "customers": "By customer type",
-        "services": "By service type"
+        "services": "By service type",
+        "emptyTitle": "Project case studies will be published here.",
+        "emptyCopy": "In the meantime, you can explore the work by customer type or by service. We will add real examples only when they reflect completed work.",
+        "viewProjects": "View projects",
+        "viewCta": "Explore"
       }
     }
   },
@@ -400,7 +408,11 @@
         "title": "Des travaux organisés par client et par service.",
         "intro": "Explorez nos segments clients et nos services. Les études de cas seront ajoutées au fil des travaux réalisés.",
         "customers": "Par type de client",
-        "services": "Par type de service"
+        "services": "Par type de service",
+        "emptyTitle": "Les études de cas seront publiées ici.",
+        "emptyCopy": "En attendant, vous pouvez explorer le travail par type de client ou par service. Nous n’ajouterons des exemples réels que lorsqu’ils correspondront à des travaux réalisés.",
+        "viewProjects": "Voir les projets",
+        "viewCta": "Explorer"
       }
     }
   }

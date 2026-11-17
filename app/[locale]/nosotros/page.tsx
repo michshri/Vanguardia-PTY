@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isLocale, type Locale } from '@/lib/locale';
-import { getHomeExtras } from '@/lib/localized-content';
+import { getHomeExtras, getPageHeaderImage } from '@/lib/localized-content';
 import { buildPageMetadata, getStaticSeo, resolveParams } from '@/lib/site-config';
 
 export async function generateMetadata({
@@ -30,7 +30,11 @@ const copy = {
     historyText: 'La experiencia de la familia se ha desarrollado en una variedad de contextos: PH, propiedades industriales, obras especializadas, impermeabilización, cubiertas verdes, mantenimiento y renovación. Esa trayectoria creó una comprensión práctica de los edificios, sus exigencias y la importancia de un trabajo bien ejecutado.',
     secondText: 'Vanguardia representa una nueva etapa: una compañía fresca, moderna y directa, pero con el mismo criterio de responsabilidad, cuidado y compromiso con la propiedad.',
     focus: 'Un enfoque basado en la responsabilidad',
-    focusText: 'En Vanguardia no solo construimos ni reparan. También entendemos la propiedad como un activo que necesita atención constante. Por eso combinamos ejecución, seguimiento y criterio de propiedad para ayudar a los clientes a tomar decisiones inteligentes, planificar mejor y evitar problemas mayores.',
+    focusText: 'En Vanguardia no solo construimos ni reparamos. También entendemos la propiedad como un activo que necesita atención constante. Por eso combinamos ejecución, seguimiento y criterio de propiedad para ayudar a los clientes a tomar decisiones inteligentes, planificar mejor y evitar problemas mayores.',
+    difference: 'Por qué es diferente',
+    differenceText: 'La construcción se vuelve difícil cuando la responsabilidad se fragmenta, la comunicación se pierde y los costos dejan de ser claros. Vanguardia está diseñada para resolver exactamente ese problema: un solo equipo responsable, alcance definido y seguimiento hasta el final.',
+    panama: 'Hecha para Panamá',
+    panamaText: 'Operamos con una comprensión práctica del mercado panameño: clima tropical, edificios exigentes, la importancia del mantenimiento preventivo, y la necesidad de combinar ejecución técnica con sentido comercial.',
     values: 'Valores',
   },
   en: {
@@ -42,6 +46,10 @@ const copy = {
     secondText: 'Vanguardia represents a new chapter: a fresh, modern and direct company, yet guided by the same standards of responsibility, care and commitment to the property.',
     focus: 'A responsibility-led approach',
     focusText: 'At Vanguardia, we do more than build or repair. We also understand the property as an asset that requires constant attention. That is why we combine execution, oversight and property judgment to help clients make smart decisions, plan better and avoid larger problems.',
+    difference: 'Why it is different',
+    differenceText: 'Construction becomes difficult when responsibility is fragmented, communication breaks down and costs become unclear. Vanguardia is designed to solve exactly that problem: one accountable team, a defined scope and follow-through to completion.',
+    panama: 'Built for Panama',
+    panamaText: 'We operate with a practical understanding of the Panamanian market: tropical climate, demanding buildings, the importance of preventive maintenance, and the need to combine technical execution with commercial common sense.',
     values: 'Values',
   },
   fr: {
@@ -53,6 +61,10 @@ const copy = {
     secondText: 'Vanguardia représente une nouvelle étape : une entreprise fraîche, moderne et directe, tout en gardant le même sens de la responsabilité, du soin et de l’engagement envers la propriété.',
     focus: 'Une approche fondée sur la responsabilité',
     focusText: 'Chez Vanguardia, nous ne construisons pas seulement ni ne réparons. Nous comprenons aussi la propriété comme un actif qui exige une attention constante. C’est pourquoi nous combinons exécution, suivi et jugement immobilier pour aider les clients à prendre de bonnes décisions, mieux planifier et éviter des problèmes plus graves.',
+    difference: 'Pourquoi c’est différent',
+    differenceText: 'La construction devient difficile lorsque la responsabilité est fragmentée, que la communication se perd et que les coûts cessent d’être clairs. Vanguardia est conçue pour résoudre exactement ce problème : une seule équipe responsable, un périmètre défini et un suivi jusqu’à la fin.',
+    panama: 'Pensée pour le Panama',
+    panamaText: 'Nous opérons avec une compréhension concrète du marché panaméen : climat tropical, bâtiments exigeants, importance de la maintenance préventive, et nécessité de combiner exécution technique et sens commercial.',
     values: 'Valeurs',
   },
 } as const;
@@ -63,10 +75,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const locale = rawLocale as Locale;
   const text = copy[locale];
   const extras = getHomeExtras(locale);
+  const headerImage = getPageHeaderImage('about');
 
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: 'linear-gradient(90deg, rgba(16,19,22,0.75), rgba(16,19,22,0.32)), url(https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${headerImage})` }}>
         <div className="container">
           <p className="section-kicker">{text.kicker}</p>
           <h1>{text.title}</h1>
@@ -83,6 +96,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             <h2>{text.focus}</h2>
             <p>{text.focusText}</p>
+
+            <h2>{text.difference}</h2>
+            <p>{text.differenceText}</p>
+
+            <h2>{text.panama}</h2>
+            <p>{text.panamaText}</p>
           </article>
 
           <aside className="info-panel">

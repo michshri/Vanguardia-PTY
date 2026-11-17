@@ -1,11 +1,26 @@
 import '../globals.css';
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Josefin_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { GoogleAnalytics } from '@/components/google-analytics';
 import { OrganizationJsonLd } from '@/components/organization-json-ld';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 import { isLocale, locales, type Locale } from '@/lib/locale';
 import { getCompanyName, getSeo, getSiteUrl, resolveParams } from '@/lib/site-config';
+
+const displayFont = Cormorant_Garamond({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display-src',
+  display: 'swap',
+});
+
+const bodyFont = Josefin_Sans({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body-src',
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -54,7 +69,7 @@ export default async function LocaleLayout({
   if (!isLocale(rawLocale)) notFound();
 
   return (
-    <html lang={rawLocale}>
+    <html lang={rawLocale} className={`${displayFont.variable} ${bodyFont.variable}`}>
       <body>
         <OrganizationJsonLd />
         <GoogleAnalytics />

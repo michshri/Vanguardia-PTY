@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MediaCard } from '@/components/media-card';
 import { isLocale, withLang, type Locale } from '@/lib/locale';
-import { getCustomerSegments, getHomeExtras } from '@/lib/localized-content';
+import { getCustomerSegments, getHomeExtras, getPageHeaderImage } from '@/lib/localized-content';
 import { buildPageMetadata, getStaticSeo, resolveParams } from '@/lib/site-config';
 
 export async function generateMetadata({
@@ -28,10 +28,11 @@ export default async function SegmentsPage({ params }: { params: Promise<{ local
   const locale = rawLocale as Locale;
   const text = getHomeExtras(locale).pages.customers;
   const customerSegments = getCustomerSegments(locale);
+  const headerImage = getPageHeaderImage('customers');
 
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: 'linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80)' }}>
+      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${headerImage})` }}>
         <div className="container">
           <p className="section-kicker">{text.kicker}</p>
           <h1>{text.title}</h1>

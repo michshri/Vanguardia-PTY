@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getSettings } from '@/lib/content';
 import { isLocale, type Locale } from '@/lib/locale';
-import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import { getCustomerSegments, getHomeExtras, getPageHeaderImage, getServiceAreas } from '@/lib/localized-content';
 import { buildPageMetadata, getCompanyName, getStaticSeo, resolveParams, resolveSearchParams } from '@/lib/site-config';
 
 const copy = {
@@ -91,6 +91,7 @@ export default async function ContactPage({
   const company = getCompanyName();
   const services = getServiceAreas(locale);
   const segments = getCustomerSegments(locale);
+  const headerImage = getPageHeaderImage('contact');
   const otherOption = form.clientOptions[form.clientOptions.length - 1] ?? 'Otro';
   const selectedService = services.some((service) => service.slug === resolvedParams?.service)
     ? resolvedParams?.service
@@ -101,7 +102,7 @@ export default async function ContactPage({
 
   return (
     <>
-      <section className="page-header" style={{ backgroundImage: 'linear-gradient(90deg, rgba(16,19,22,0.75), rgba(16,19,22,0.3)), url(https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1500&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-header" style={{ backgroundImage: `linear-gradient(180deg, rgba(16,19,22,0.72), rgba(16,19,22,0.45)), url(${headerImage})` }}>
         <div className="container">
           <p className="section-kicker">{text.kicker}</p>
           <h1>{text.title}</h1>

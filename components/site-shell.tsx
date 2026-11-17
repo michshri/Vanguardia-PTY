@@ -6,7 +6,12 @@ import { Suspense, useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { getSettings } from '@/lib/content';
 import { localeFromPathname, stripLocalePrefix, withLang } from '@/lib/locale';
-import { getCustomerSegments, getHomeExtras, getServiceAreas } from '@/lib/localized-content';
+import {
+  getCustomerSegments,
+  getHomeExtras,
+  getServiceAreas,
+  hasPublishedProjects,
+} from '@/lib/localized-content';
 import { getCompanyName } from '@/lib/site-config';
 import { getDictionary } from '@/lib/translations';
 
@@ -69,7 +74,7 @@ function SiteHeaderInner() {
       label: dict.nav.segments,
       children: segments.map((segment) => ({ href: segment.href, label: segment.title })),
     },
-    { href: '/proyectos', label: dict.nav.projects },
+    ...(hasPublishedProjects() ? [{ href: '/proyectos', label: dict.nav.projects }] : []),
     { href: '/nosotros', label: dict.nav.about },
     { href: '/contacto', label: dict.nav.contact },
   ];

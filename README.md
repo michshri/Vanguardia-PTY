@@ -1,17 +1,43 @@
-# Vanguardia PTY
+# Vanguardia Constructions Group
 
-This repository was created for the Vanguardia PTY project.
+Marketing website for **Vanguardia Constructions Group**, a Panama-based construction and property services company.
 
-## Project status
+- Domain: [www.vanguardiapty.com](https://www.vanguardiapty.com)
+- Stack: Next.js (App Router), React, TypeScript
+- Languages: Spanish (default), English (`/en/...`), French (`/fr/...`)
+- Hosting: Vercel
 
-This is a starter repository scaffold. Add your source code, documentation, and project files here.
+## Local development
 
-## Getting started
+```bash
+npm install
+npm run dev
+```
 
-1. Clone this repository.
-2. Add your project files.
-3. Commit and push your changes.
+Useful commands:
 
-## License
+```bash
+npm run build
+npm run lint
+npx tsc --noEmit
+```
 
-This project is currently unlicensed unless you add a license file.
+## Content
+
+Editable site content lives in `content/`:
+
+- `services.json` — five service categories
+- `segments.json` — residential, commercial & industrial, PH
+- `projects.json` — project case studies (empty until real work is added)
+- `ui.json` — shared UI strings
+- `seo.json` — titles and descriptions
+- `settings.json` — company name, site URL, analytics, placeholders
+- `page-headers.json` — page header images
+
+Do not invent certifications, clients, awards or project history. Add project entries to `projects.json` only from approved real work.
+
+## Notes
+
+- Contact phone and WhatsApp remain placeholders until real details are supplied.
+- The contact form UI exists; enquiry delivery is not implemented yet.
+- Stock Unsplash images are temporary placeholders until company photography is provided.
